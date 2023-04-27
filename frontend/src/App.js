@@ -46,9 +46,6 @@ function App() {
         <button onClick={navigateToMyFavorites}>My Favorites</button>
         <button onClick={navigateToGameShop}>Game Shop</button>
       </nav>
-      <header>
-        <h1>GAMESHOP</h1>
-      </header>
       {content}
       <ul>
         {mygames.map((game) => (

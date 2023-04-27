@@ -1,5 +1,11 @@
-export default function Home() {
-    return (
-        <h2>Home</h2>
-    )
+import React from 'react';
+
+function Home() {
+  return (
+    <div>
+      <h1 id="home-heading">GAMESHOP</h1>
+    </div>
+  );
 }
+
+export default Home;
