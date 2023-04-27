@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import './App.css';
 import { mygames } from './games';
+import logo from './logos/SVG/macslogo_white.svg';
 import Home from './components/home';
 import MyFavorites from './components/my_fav';
 import GameShop from './components/game_shop';
 import MyGames from './components/my_games';
+
 
 function App() {
   const [currentPage, setCurrentPage] = useState('Home');
@@ -39,7 +41,7 @@ function App() {
   return (
     <div>
       <nav className="header-nav">
-        <img src="./logos/SVG/macslogo_white.svg" alt="My logo" />
+        <img src={logo} alt="My logo" />
         <button onClick={navigateToHome}>Home</button>
         <button onClick={navigateToMyGames}>My Games</button>
         <button onClick={navigateToMyFavorites}>My Favorites</button>
