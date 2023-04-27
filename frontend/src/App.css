@@ -36,3 +36,57 @@
     transform: rotate(360deg);
   }
 }
+
+/*Alt under er lagt inn av gruppa*/
+
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #000000;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.header-nav img {
+  height: 3rem;
+  margin-right: 1rem;
+}
+
+.header-nav button {
+  padding: 0.5rem 1rem;
+  margin-left: 1rem;
+  font-size: 1rem;
+  color: white;
+  background-color: #333;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.header-nav button:hover {
+  background-color: #555;
+}
+
+h1 {
+  margin: 2rem;
+  text-align: left;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+li {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: center;
+  min-width: 150px;
+}
