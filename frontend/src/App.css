@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+/*Alt under denne har blitt lagt til av brukerne*/
+
+.header-nav {
+  display: flex;
+  align-items: center;
+}
+
+.header-nav > * {
+  margin-right: 1rem;
+}
+
+.header-nav > :last-child {
+  margin-right: 0;
+}
