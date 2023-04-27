@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './App.css';
-import './_examvariables.scss';
 import { mygames } from './games';
 import Home from './components/home';
 import MyFavorites from './components/my_fav';
