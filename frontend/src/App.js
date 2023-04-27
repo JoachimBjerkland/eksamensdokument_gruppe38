@@ -34,7 +34,7 @@ function App() {
   if (currentPage === 'MyFavorites') {
     content = <MyFavorites />;
   } else if (currentPage === 'GameShop') {
-    content = <GameShop />;
+    content = <GameShop games={mygames} />;
   } else if (currentPage === 'MyGames') {
     content = <MyGames />;
   } else {
@@ -57,13 +57,6 @@ function App() {
         <h1>My Favorites</h1>
       </header>
       {content}
-      <ul>
-        {mygames.map((game) => (
-          <li key={game.id}>
-            {game.title} ({game.platform})
-          </li>
-        ))}
-      </ul>
     </div>
 >>>>>>> Stashed changes
   );
