@@ -2,7 +2,7 @@ import './App.css';
 
 function App() {
   return (
-<h2>Overskrift </h2>
+<h2>Overskrift</h2>
   );
 }
 
