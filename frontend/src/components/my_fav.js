@@ -1,5 +1,5 @@
 import React from 'react';
-import { mygames } from "../games";
+import { mygames } from '../games';
 
 const favGameIds = [7, 8, 6, 9, 13];
 

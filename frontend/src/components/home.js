@@ -1,5 +1,5 @@
 import React from 'react';
-import { store, mygames } from "../games"
+import { store, mygames } from '../games';
 
 function Home() {
   const firstThreeGames = store.slice(0, 3);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { store } from "../games";
+import { store } from '../games';
 
 function GameShop() {
   return (
