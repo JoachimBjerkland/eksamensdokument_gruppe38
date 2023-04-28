@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './App.css';
-import { mygames } from './games';
 import logo from './logos/SVG/macslogo_white.svg';
 import Home from './components/home';
 import MyFavorites from './components/my_fav';
@@ -48,13 +47,6 @@ function App() {
         <button onClick={navigateToGameShop}>Game Shop</button>
       </nav>
       {content}
-      <ul>
-        {mygames.map((game) => (
-          <li key={game.id}>
-            {game.title} ({game.platform})
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }
