@@ -40,7 +40,7 @@ function App() {
   return (
     <div>
       <nav className="header-nav">
-        <img src={logo} alt="My logo" />
+        <img src={logo} alt="My logo" onClick={navigateToHome} />
         <button onClick={navigateToHome}>Home</button>
         <button onClick={navigateToMyGames}>My Games</button>
         <button onClick={navigateToMyFavorites}>My Favorites</button>
