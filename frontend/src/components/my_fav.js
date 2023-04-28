@@ -7,7 +7,7 @@ function FavGames () {
   const favGames = mygames.filter((game) => favGameIds.includes(game.id));
   return (
     <div>
-      <h1 id="favgames-heading">MY FAVORITE GAMES</h1>
+      <h1 id="fav-heading">MY FAVORITE GAMES</h1>
       <ul>
         {favGames.map((game) => (
           <li key={game.id}>

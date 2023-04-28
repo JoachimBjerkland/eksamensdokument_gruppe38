@@ -39,6 +39,7 @@ function Home() {
               </li>
             ))}
           </ul>
+          <button className="visit-games">My games</button>
       </div>
       <div>
         <h2 id="home-heading">MY FAVOURITES</h2>
@@ -52,6 +53,7 @@ function Home() {
             </li>
           ))}
         </ul>
+        <button className="visit-fav">Go to favourites</button>
       </div>
     </div>
   );
