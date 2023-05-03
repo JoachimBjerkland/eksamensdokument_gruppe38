@@ -5,7 +5,7 @@ function Home() {
   const firstThreeGames = store.slice(0, 3);
 
   const favoriteGames = mygames.filter(game => {
-    return game.title === "Grand Theft Auto V" || game.title === "Red Dead Redemption 2" || game.title === "The Sims™ 4" || game.title === "The Witcher® 3: Wild Hunt" || game.title === "The Elder Scrolls V: Skyrim Special Edition" || game.title === "Resident Evil 4";
+    return game.title === "Grand Theft Auto V" || game.title === "Red Dead Redemption 2";
   });
 
   return (
@@ -55,7 +55,7 @@ function Home() {
             </li>
           ))}
         </ul>
-        <button id="visit-games" className="visit-games">My games</button>
+        <button id="visit-games" className="visit-games">Go to library</button>
       </div>
     </div>
   );

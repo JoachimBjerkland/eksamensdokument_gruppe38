@@ -5,6 +5,8 @@ import Home from './components/home';
 import MyFavorites from './components/my_fav';
 import GameShop from './components/game_shop';
 import MyGames from './components/my_games';
+import GameCard from './components/GameCard'
+import GamePage from './components/GamePage'
 
 
 function App() {

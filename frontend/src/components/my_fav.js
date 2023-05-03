@@ -1,7 +1,7 @@
 import React from 'react';
 import { mygames } from '../games';
 
-const favGameIds = [7, 8, 6, 9, 13, 15, 22, 34];
+const favGameIds = [6, 7, 8, 9, 19, 11, 12, 13, 14, 15];
 
 function FavGames () {
   const favGames = mygames.filter((game) => favGameIds.includes(game.id));
