@@ -67,3 +67,4 @@ export default Home;
 //Kilde: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strong
 //Kilde: https://legacy.reactjs.org/docs/lists-and-keys.html
 //Kilde: https://upmostly.com/tutorials/react-filter-filtering-arrays-in-react-with-examples
+//Kilde: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice
