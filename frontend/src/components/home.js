@@ -5,7 +5,7 @@ function Home() {
   const firstThreeGames = store.slice(0, 3);
 
   const favoriteGames = mygames.filter(game => {
-    return game.title === "Grand Theft Auto V" || game.title === "Red Dead Redemption 2";
+    return game.title === "Grand Theft Auto V" || game.title === "Destiny 2";
   });
 
   return (
