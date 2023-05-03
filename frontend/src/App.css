@@ -127,3 +127,14 @@ li {
   color: #333;
   margin-left: 2rem;
 }
+
+#favorite-games {
+  float: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-left: 2px solid #ccc;
+  padding-left: 10px;
+  margin-left: 20px;
+  width: 30%;
+}

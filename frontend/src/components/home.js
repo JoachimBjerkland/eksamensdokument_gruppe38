@@ -6,7 +6,7 @@ function Home() {
 
   const favoriteGames = mygames.filter(game => {
     return game.title === "Destiny 2" || game.title === "EA SPORTS™ FIFA 23";
-});
+  });
 
   return (
     <div>
@@ -15,7 +15,7 @@ function Home() {
       <ul className="game-list">
         {firstThreeGames.map((game) => (
           <div className="game-card" key={game.id}>
-             <li className="game-info">
+            <li className="game-info">
               <h3>{game.title}</h3>
               <img src={game.img} alt={game.title} />
               <p><strong>Release Date:</strong> {game.released}</p>
@@ -27,22 +27,9 @@ function Home() {
           </div>
         ))}
       </ul>
-      <div>
-          <h2 id="home-heading">MY GAME-LIBRARY - {mygames.length} games</h2>
-          <ul>
-            {mygames.slice(0, 4).map((game) => (
-              <li key={game.id}>
-                <h3>{game.title}</h3>
-                <img src={game.img} alt={game.title} />
-                <p><strong>Release Date:</strong> {game.released}</p>
-                <p><strong>Genres:</strong> {game.genres.join(', ')}</p>
-              </li>
-            ))}
-          </ul>
-          <button className="visit-games">My games</button>
-      </div>
-      <div>
-        <h2 id="home-heading">MY FAVOURITES</h2>
+      
+      <div id="favorite-games">
+        <h2 id="home-heading">MY FAVORITES</h2>
         <ul>
           {favoriteGames.map((game) => (
             <li key={game.id}>
@@ -53,7 +40,22 @@ function Home() {
             </li>
           ))}
         </ul>
-        <button className="visit-fav">Go to favourites</button>
+        <button className="visit-fav">Go to favorites</button>
+      </div>
+
+      <div>
+        <h2 id="home-heading">MY GAME-LIBRARY - {mygames.length} games</h2>
+        <ul>
+          {mygames.slice(0, 4).map((game) => (
+            <li key={game.id}>
+              <h3>{game.title}</h3>
+              <img src={game.img} alt={game.title} />
+              <p><strong>Release Date:</strong> {game.released}</p>
+              <p><strong>Genres:</strong> {game.genres.join(', ')}</p>
+            </li>
+          ))}
+        </ul>
+        <button className="visit-games">My games</button>
       </div>
     </div>
   );
