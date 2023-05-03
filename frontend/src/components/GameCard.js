@@ -4,7 +4,7 @@ function GameCard() {
   const game = mygames[0];
 
   return (
-    <div className="game-card">
+    <div id="gamecards" className="game-card">
       <h2>{game.title}</h2>
       <img src={game.img} alt={game.title} />
       <p><strong>Release Date:</strong> {game.released}</p>
