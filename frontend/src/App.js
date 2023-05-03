@@ -5,9 +5,8 @@ import Home from './components/home';
 import MyFavorites from './components/my_fav';
 import GameShop from './components/game_shop';
 import MyGames from './components/my_games';
-import GameCard from './components/GameCard'
-import GamePage from './components/GamePage'
-
+import GameCard from './components/GameCard';
+import GamePage from './components/GamePage';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('Home');
@@ -28,15 +27,27 @@ function App() {
     setCurrentPage('MyGames');
   };
 
+  const navigateToGameCard = (game) => {
+    setCurrentPage({ name: 'GameCard', props: { game: game } });
+  };
+
+  const navigateToGamePage = (game) => {
+    setCurrentPage({ name: 'GamePage', props: { game: game } });
+  };
+
   let content;
   if (currentPage === 'MyFavorites') {
     content = <MyFavorites />;
   } else if (currentPage === 'GameShop') {
     content = <GameShop />;
   } else if (currentPage === 'MyGames') {
-    content = <MyGames />;
+    content = <MyGames navigateToGamePage={navigateToGamePage} />;
+  } else if (currentPage.name === 'GameCard') {
+    content = <GameCard game={currentPage.props.game} />;
+  } else if (currentPage.name === 'GamePage') {
+    content = <GamePage game={currentPage.props.game} />;
   } else {
-    content = <Home />;
+    content = <Home navigateToGameCard={navigateToGameCard} />;
   }
 
   return (
@@ -47,6 +58,9 @@ function App() {
         <button onClick={navigateToMyGames}>My Games</button>
         <button onClick={navigateToMyFavorites}>My Favorites</button>
         <button onClick={navigateToGameShop}>Game Shop</button>
+        <button onClick={navigateToGameCard}>Game Card</button>
+        <button onClick={navigateToGamePage}>Game Page</button>
+
       </nav>
       {content}
     </div>
@@ -54,6 +68,7 @@ function App() {
 }
 
 export default App;
+
 
 //Kilder: https://stackoverflow.com/questions/38486660/how-to-add-a-classname-id-to-react-bootstrap-component
 //Kilde: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strong
