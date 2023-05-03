@@ -5,23 +5,23 @@ function Home() {
   const firstThreeGames = store.slice(0, 3);
 
   const favoriteGames = mygames.filter(game => {
-    return game.title === "Destiny 2" || game.title === "EA SPORTS™ FIFA 23";
+    return game.title === "Grand Theft Auto V" || game.title === "Red Dead Redemption 2" || game.title === "The Sims™ 4" || game.title === "The Witcher® 3: Wild Hunt" || game.title === "The Elder Scrolls V: Skyrim Special Edition" || game.title === "Resident Evil 4";
   });
 
   return (
     <div>
       <h1 id="home-heading">GAMESHOP</h1>
-      <button className="visit-shop">Visit shop</button>
+      <button id="visit-shop" className="visit-shop">Visit shop</button>
       <ul className="game-list">
         {firstThreeGames.map((game) => (
-          <div className="game-card" key={game.id}>
+          <div id="game-card" className="game-card" key={game.id}>
             <li className="game-info">
               <h3>{game.title}</h3>
               <img src={game.img} alt={game.title} />
               <p><strong>Release Date:</strong> {game.released}</p>
               <p><strong>Genres:</strong> {game.genres.join(', ')}</p>
               <a href={game.link} target="_blank" rel="noopener noreferrer">
-                <button className="buy-button">Buy</button>
+                <button id="buy-button" className="buy-button">Buy</button>
               </a>
             </li>
           </div>
@@ -40,7 +40,7 @@ function Home() {
             </li>
           ))}
         </ul>
-        <button className="visit-fav">Go to favorites</button>
+        <button id="visit-fav" className="visit-fav">Go to favorites</button>
       </div>
 
       <div>
@@ -55,10 +55,15 @@ function Home() {
             </li>
           ))}
         </ul>
-        <button className="visit-games">My games</button>
+        <button id="visit-games" className="visit-games">My games</button>
       </div>
     </div>
   );
 }
 
 export default Home;
+
+//Kilder: https://stackoverflow.com/questions/38486660/how-to-add-a-classname-id-to-react-bootstrap-component
+//Kilde: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strong
+//Kilde: https://legacy.reactjs.org/docs/lists-and-keys.html
+//Kilde: https://upmostly.com/tutorials/react-filter-filtering-arrays-in-react-with-examples
