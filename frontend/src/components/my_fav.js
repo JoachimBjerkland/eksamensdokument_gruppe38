@@ -11,10 +11,13 @@ function FavGames () {
       <ul>
         {favGames.map((game) => (
           <li key={game.id}>
-              <h2>{game.title}</h2>
-              <img src={game.img} alt={game.title} />
-              <p><strong>Release Date:</strong> {game.released}</p>
-              <p><strong>Genres:</strong> {game.genres.join(', ')}</p>
+            <h2>{game.title}</h2>
+            <img src={game.img} alt={game.title} />
+            <p><strong>Release Date:</strong> {game.released}</p>
+            <p><strong>Genres:</strong> {game.genres.join(', ')}</p>
+            <a href={`/game/${game.title.toLowerCase().split(' ').join('-')}`} target="_blank" rel="noopener noreferrer">
+              <button id="read-more-button" className="read-more-button">Read more</button>
+            </a>
           </li>
         ))}
       </ul>
@@ -23,6 +26,7 @@ function FavGames () {
 }
 
 export default FavGames;
+
 
 //Kilder: https://stackoverflow.com/questions/38486660/how-to-add-a-classname-id-to-react-bootstrap-component
 //Kilde: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strong
