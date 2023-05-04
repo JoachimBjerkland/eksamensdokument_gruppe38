@@ -17,7 +17,7 @@ function GamePage() {
       <p><strong>Game Link:</strong> {game.link}</p>
       <p><strong>Game Image:</strong> {game.img}</p>
       <p><strong>Id:</strong> {game.id}</p>
-      <p><strong>Favorite?:</strong> {game.fav ? 'Yes' : 'No'}</p>
+      <p><strong>Favorite:</strong> {game.fav ? 'Yes' : 'No'}</p>
       <a href={game.link} target="_blank" rel="noopener noreferrer">
         <button className="buy-button">Buy Now</button>
       </a>
