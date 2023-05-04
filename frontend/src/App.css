@@ -184,3 +184,15 @@ li {
   margin-top: 150px;
   margin-left: 680px;
 }
+
+#buy-button {
+  background-color: black;
+  color: white;
+  margin-left: 0px;
+}
+
+#buybutton {
+  background-color: black;
+  color: white;
+  margin-left: 0px;
+}

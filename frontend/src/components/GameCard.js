@@ -10,7 +10,7 @@ function GameCard() {
       <p><strong>Release Date:</strong> {game.released}</p>
       <p><strong>Genres:</strong> {game.genres.join(', ')}</p>
       <a href={game.link} target="_blank" rel="noopener noreferrer">
-        <button className="buy-button">Buy Now</button>
+        <button id="buybutton" className="buy-button">Buy Now</button>
       </a>
     </div>
   );
