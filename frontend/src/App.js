@@ -29,7 +29,7 @@ function App() {
 
   const navigateToGameCard = (game) => {
     setCurrentPage({ name: 'GameCard', props: { game: game } });
-  };
+  };  
 
   const navigateToGamePage = (game) => {
     setCurrentPage({ name: 'GamePage', props: { game: game } });
@@ -41,7 +41,7 @@ function App() {
   } else if (currentPage === 'GameShop') {
     content = <GameShop />;
   } else if (currentPage === 'MyGames') {
-    content = <MyGames navigateToGamePage={navigateToGamePage} />;
+    content = <MyGames navigateToGamePage={navigateToGamePage} navigateToGameCard={navigateToGameCard} />;
   } else if (currentPage.name === 'GameCard') {
     content = <GameCard game={currentPage.props.game} />;
   } else if (currentPage.name === 'GamePage') {
@@ -58,7 +58,7 @@ function App() {
         <button onClick={navigateToMyGames}>My Games</button>
         <button onClick={navigateToMyFavorites}>My Favorites</button>
         <button onClick={navigateToGameShop}>Game Shop</button>
-        <button onClick={navigateToGameCard}>Game Card</button>
+        <button onClick={() => navigateToGameCard({title: "Example Game", img: "https://example.com/game.png", id: 1, released: "2021-01-01", genres: ["Action", "Adventure"], link: "https://example.com", fav: false})}>Game Card</button>
         <button onClick={navigateToGamePage}>Game Page</button>
 
       </nav>
@@ -68,6 +68,7 @@ function App() {
 }
 
 export default App;
+
 
 
 //Kilder: https://stackoverflow.com/questions/38486660/how-to-add-a-classname-id-to-react-bootstrap-component
