@@ -1,8 +1,22 @@
 import { useState } from 'react';
 import { mygames } from '../games';
 
-function GamePage() {
-  const [game] = useState(mygames[3]);
+function GamePage(props) {
+  const [game, setGame] = useState(null);
+
+  // get the game ID from the URL parameter
+  const gameId = props.match.params.id;
+
+  // find the game with the matching ID in the mygames array
+  const foundGame = mygames.find((game) => game.title.toLowerCase().split(' ').join('-') === gameId);
+
+  // set the game state to the found game
+  setGame(foundGame);
+
+  // return null if the game isn't found
+  if (!game) {
+    return null;
+  }
 
   return (
     <div id="gamepage" className="game-card">
@@ -22,6 +36,7 @@ function GamePage() {
 }
 
 export default GamePage;
+
 
 
 

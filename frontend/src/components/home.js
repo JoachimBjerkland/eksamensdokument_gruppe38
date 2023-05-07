@@ -13,7 +13,18 @@ function Home() {
       <h1 id="home-heading">GAMESHOP</h1>
       <button id="visit-shop" className="visit-shop">Visit shop</button>
       <ul className="game-list">
-        {firstThreeGames.map((game) => (
+        <div id="game-card" className="game-card" key={firstThreeGames[0].id}>
+          <li className="game-info">
+            <a href="/gamecard">
+              <h3>{firstThreeGames[0].title}</h3>
+              <img src={firstThreeGames[0].img} alt={firstThreeGames[0].title} />
+              <p><strong>Release Date:</strong> {firstThreeGames[0].released}</p>
+              <p><strong>Genres:</strong> {firstThreeGames[0].genres.join(', ')}</p>
+              <button id="buy-button" className="buy-button">Buy</button>
+            </a>
+          </li>
+        </div>
+        {firstThreeGames.slice(1).map((game) => (
           <div id="game-card" className="game-card" key={game.id}>
             <li className="game-info">
               <h3>{game.title}</h3>
@@ -62,6 +73,7 @@ function Home() {
 }
 
 export default Home;
+
 
 //Kilder: https://stackoverflow.com/questions/38486660/how-to-add-a-classname-id-to-react-bootstrap-component
 //Kilde: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strong
