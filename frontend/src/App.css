@@ -119,14 +119,69 @@ li {
   margin-left: 2rem;
 }
 
-#gameshop-heading {
-  font-size: 2.5rem;
-  font-weight: bold;
-  text-align: left;
-  margin: 2rem 0;
-  color: #333;
-  margin-left: 2rem;
+#gameshop {
+  margin: 2rem auto;
+  max-width: 1200px;
 }
+
+#gameshop ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#gameshop li {
+  flex-basis: calc(33.33% - 1rem);
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+#gameshop li img {
+  width: 200px;
+  height: 112px;
+  margin-right: 1rem;
+}
+
+
+#gameshop li h2 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+#gameshop li p {
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+}
+
+#gameshop li .release-date {
+  font-weight: bold;
+}
+
+#gameshop li .genres {
+  font-weight: bold;
+  margin-right: 1rem;
+}
+
+#gameshop li a {
+  margin-left: auto;
+}
+
+#gameshop li button {
+  background-color: #f5f5f5;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
 
 #favorite-games {
   float: right;
