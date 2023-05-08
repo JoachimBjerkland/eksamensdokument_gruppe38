@@ -1,72 +1,70 @@
-import React from 'react';
-import { store, mygames } from '../games';
+import React, { useState, useEffect } from 'react';
 
 function Home() {
-  const firstThreeGames = store.slice(0, 3);
+  const [recentGames, setRecentGames] = useState([]);
+  const [myGames, setMyGames] = useState([]);
 
-  const favoriteGames = mygames.filter(game => {
-    return game.title === "Grand Theft Auto V" || game.title === "Destiny 2";
-  });
+  useEffect(() => {
+    fetch('https://api.rawg.io/api/games?key=84ac59c1218a4dc4a60287a81d0a0fbd&dates=2023-01-01,2023-05-08&ordering=-released&page_size=3')
+      .then(res => res.json())
+      .then(data => {
+        setRecentGames(data.results);
+      })
+
+    fetch('https://api.rawg.io/api/games?key=84ac59c1218a4dc4a60287a81d0a0fbd&page_size=4')
+      .then(res => res.json())
+      .then(data => {
+        setMyGames(data.results);
+      })
+  }, []);
 
   return (
     <div>
       <h1 id="home-heading">GAMESHOP</h1>
       <button id="visit-shop" className="visit-shop">Visit shop</button>
       <ul className="game-list">
-        <div id="game-card" className="game-card" key={firstThreeGames[0].id}>
-          <li className="game-info">
-            <a href="/gamecard">
-              <h3>{firstThreeGames[0].title}</h3>
-              <img src={firstThreeGames[0].img} alt={firstThreeGames[0].title} />
-              <p><strong>Release Date:</strong> {firstThreeGames[0].released}</p>
-              <p><strong>Genres:</strong> {firstThreeGames[0].genres.join(', ')}</p>
-              <button id="buy-button" className="buy-button">Buy</button>
-            </a>
-          </li>
-        </div>
-        {firstThreeGames.slice(1).map((game) => (
+        {recentGames.map(game => (
           <div id="game-card" className="game-card" key={game.id}>
             <li className="game-info">
-              <h3>{game.title}</h3>
-              <img src={game.img} alt={game.title} />
-              <p><strong>Release Date:</strong> {game.released}</p>
-              <p><strong>Genres:</strong> {game.genres.join(', ')}</p>
-              <a href={game.link} target="_blank" rel="noopener noreferrer">
+              <a href="/gamecard">
+                <h3>{game.name}</h3>
+                <img src={game.background_image} alt={game.name} />
+                <p><strong>Release Date:</strong> {game.released}</p>
+                <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
                 <button id="buy-button" className="buy-button">Buy</button>
               </a>
             </li>
           </div>
         ))}
       </ul>
-      
+
       <div id="favorite-games">
-        <h2 id="home-heading">MY FAVORITES</h2>
-        <ul>
-          {favoriteGames.map((game) => (
-            <li key={game.id}>
-              <h3>{game.title}</h3>
-              <img src={game.img} alt={game.title} />
-              <p><strong>Release Date:</strong> {game.released}</p>
-              <p><strong>Genres:</strong> {game.genres.join(', ')}</p>
-            </li>
-          ))}
-        </ul>
-        <button id="visit-fav" className="visit-fav">Go to favorites</button>
+        <h2 id="favorite-heading">MY FAVORITES</h2>
+        {/* Add your favorite games here */}
       </div>
 
       <div>
-        <h2 id="home-heading">MY GAME-LIBRARY - {mygames.length} games</h2>
-        <ul>
-          {mygames.slice(0, 4).map((game) => (
-            <li key={game.id}>
-              <h3>{game.title}</h3>
-              <img src={game.img} alt={game.title} />
-              <p><strong>Release Date:</strong> {game.released}</p>
-              <p><strong>Genres:</strong> {game.genres.join(', ')}</p>
-            </li>
+        <h2 id="game-library-heading">MY GAME-LIBRARY - {myGames.length} games</h2>
+        <ul className="game-list">
+          {myGames.map(game => (
+            <div id="game-card" className="game-card" key={game.id}>
+              <li className="game-info">
+                <a href="/gamecard">
+                  <h3>{game.name}</h3>
+                  <img src={game.background_image} alt={game.name} />
+                  <p><strong>Release Date:</strong> {game.released}</p>
+                  <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
+                  <button id="buy-button" className="buy-button">Buy</button>
+                </a>
+              </li>
+            </div>
           ))}
         </ul>
-        <button id="visit-games" className="visit-games">Go to library</button>
+        <footer>
+          <p>
+            Powered by <a href="https://rawg.io/">RAWG API</a>
+          </p>
+        </footer>
       </div>
     </div>
   );
