@@ -4,7 +4,7 @@ function GameShop() {
   const [shopGames, setShopGames] = useState([]);
 
   useEffect(() => {
-    fetch('https://api.rawg.io/api/games?key=84ac59c1218a4dc4a60287a81d0a0fbd&dates=2019-09-01,2019-09-30&ordering=-released&page_size=10')
+    fetch('https://api.rawg.io/api/games?key=84ac59c1218a4dc4a60287a81d0a0fbd&dates=2019-09-01,2019-09-30&ordering=-released&page_size=40')
       .then(res => res.json())
       .then(data => setShopGames(data.results))
   }, []);
@@ -40,10 +40,6 @@ function GameShop() {
 }
 
 export default GameShop;
-
-
-
-
 
 
 //Kilder: https://stackoverflow.com/questions/38486660/how-to-add-a-classname-id-to-react-bootstrap-component

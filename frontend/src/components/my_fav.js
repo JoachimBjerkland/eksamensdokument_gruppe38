@@ -9,7 +9,7 @@ function FavGames() {
       const url = `https://api.rawg.io/api/games?key=84ac59c1218a4dc4a60287a81d0a0fbd&dates=2019-09-01,2019-09-30&platforms=18,1,7`;
       const response = await fetch(url);
       const data = await response.json();
-      setFavoriteGames(data.results.slice(0, 9));
+      setFavoriteGames(data.results.slice(0, 20));
     };
     fetchData();
   }, []);
