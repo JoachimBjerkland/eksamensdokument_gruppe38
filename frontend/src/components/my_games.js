@@ -1,33 +1,56 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { mygames } from '../games';
 
 function MyGames() {
-  const firstGame = mygames[0];
+  const [games, setGames] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const apiKey = '84ac59c1218a4dc4a60287a81d0a0fbd';
+      const url = `https://api.rawg.io/api/games?key=${apiKey}&dates=2019-09-01,2019-09-30&platforms=18,1,7&page_size=10`;
+      const response = await fetch(url);
+      const data = await response.json();
+      setGames(data.results);
+    };
+    fetchData();
+  }, []);
+
+  if (games.length === 0) {
+    return <div>Loading...</div>;
+  }
+
+  const firstGame = games[0];
 
   return (
     <div>
       <h1 id="games-heading">MY GAMES</h1>
-      <ul>
-        <li key={firstGame.id}>
-          <Link to={`/game/${firstGame.title.toLowerCase().replace(/\s+/g, '-')}`}>
-            <h2>{firstGame.title}</h2>
-            <img src={firstGame.img} alt={firstGame.title} />
+      <ul className="game-list">
+        <li id={`game-${firstGame.id}`} key={firstGame.id} className="game-card">
+          <Link to={`/game/${firstGame.slug}`}>
+            <h2>{firstGame.name}</h2>
+            <img src={firstGame.background_image} alt={firstGame.name} />
             <p><strong>Release Date:</strong> {firstGame.released}</p>
-            <p><strong>Genres:</strong> {firstGame.genres.join(', ')}</p>
+            <p><strong>Genres:</strong> {firstGame.genres.map(genre => genre.name).join(', ')}</p>
             <button id="view-button" className="view-button">View details</button>
           </Link>
         </li>
-        {mygames.slice(1).map((game) => (
-          <li key={game.id}>
-            <h2>{game.title}</h2>
-            <img src={game.img} alt={game.title} />
-            <p><strong>Release Date:</strong> {game.released}</p>
-            <p><strong>Genres:</strong> {game.genres.join(', ')}</p>
-            <button id="view-button" className="view-button">View details</button>
+        {games.slice(1).map((game) => (
+          <li id={`game-${game.id}`} key={game.id} className="game-card">
+            <Link to={`/game/${game.slug}`}>
+              <h2>{game.name}</h2>
+              <img src={game.background_image} alt={game.name} />
+              <p><strong>Release Date:</strong> {game.released}</p>
+              <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
+              <button id="view-button" className="view-button">View details</button>
+            </Link>
           </li>
         ))}
       </ul>
+      <footer>
+          <p>
+            Powered by <a href="https://rawg.io/">RAWG API</a>
+          </p>
+        </footer>
     </div>
   );
 }

@@ -17,6 +17,11 @@ function GamePage() {
       <a href={game.link} target="_blank" rel="noopener noreferrer">
         <button id="buy-button" className="buy-button">Buy Now</button>
       </a>
+      <footer>
+          <p>
+            Powered by <a href="https://rawg.io/">RAWG API</a>
+          </p>
+        </footer>
     </div>
   );
 }

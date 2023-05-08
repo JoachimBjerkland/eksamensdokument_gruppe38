@@ -1,31 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { mygames } from '../games';
-
-const favGameIds = [6, 7, 8, 9, 19, 11, 12, 13, 14, 15];
 
 function FavGames() {
-  const favGames = mygames.filter((game) => favGameIds.includes(game.id));
-  
+  const [favoriteGames, setFavoriteGames] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const url = `https://api.rawg.io/api/games?key=84ac59c1218a4dc4a60287a81d0a0fbd&dates=2019-09-01,2019-09-30&platforms=18,1,7`;
+      const response = await fetch(url);
+      const data = await response.json();
+      setFavoriteGames(data.results.slice(0, 9));
+    };
+    fetchData();
+  }, []);
+
   return (
     <div>
       <h1 id="fav-heading">MY FAVORITE GAMES</h1>
-      <ul>
-        {favGames.map((game, index) => (
+      <ul id="fav-games-list">
+        {favoriteGames.map((game, index) => (
           <li key={game.id}>
             {index === 0 ? (
-              <Link to={`/game/${game.title.toLowerCase().split(' ').join('-')}`}>
-                <h2>{game.title}</h2>
-                <img src={game.img} alt={game.title} />
+              <Link to={`/game/${game.slug}`}>
+                <h2>{game.name}</h2>
+                <img src={game.background_image} alt={game.name} />
                 <p><strong>Release Date:</strong> {game.released}</p>
-                <p><strong>Genres:</strong> {game.genres.join(', ')}</p>
+                <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
               </Link>
             ) : (
               <>
-                <h2>{game.title}</h2>
-                <img src={game.img} alt={game.title} />
+                <h2>{game.name}</h2>
+                <img src={game.background_image} alt={game.name} />
                 <p><strong>Release Date:</strong> {game.released}</p>
-                <p><strong>Genres:</strong> {game.genres.join(', ')}</p>
+                <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
               </>
             )}
           </li>
@@ -41,6 +48,9 @@ function FavGames() {
 }
 
 export default FavGames;
+
+
+
 
 
 //Kilder: https://stackoverflow.com/questions/38486660/how-to-add-a-classname-id-to-react-bootstrap-component
