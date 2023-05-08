@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './App.css';
+import './App.scss';
 import logo from './logos/SVG/macslogo_white.svg';
 import Home from './components/home';
 import MyFavorites from './components/my_fav';
