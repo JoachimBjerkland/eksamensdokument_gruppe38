@@ -36,13 +36,13 @@ function MyGames() {
         </li>
         {games.slice(1).map((game) => (
           <li id={`game-${game.id}`} key={game.id} className="game-card">
-            <Link to={`/game/${game.slug}`}>
+            <div>
               <h2>{game.name}</h2>
               <img src={game.background_image} alt={game.name} />
               <p><strong>Release Date:</strong> {game.released}</p>
               <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
-              <button id="view-button" className="view-button">View details</button>
-            </Link>
+              <button id="view-button" className="view-button" disabled>View details</button>
+            </div>
           </li>
         ))}
       </ul>
@@ -56,6 +56,7 @@ function MyGames() {
 }
 
 export default MyGames;
+
 
 
 
