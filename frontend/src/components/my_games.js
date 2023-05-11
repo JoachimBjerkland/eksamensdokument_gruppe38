@@ -15,42 +15,40 @@ function MyGames() {
     fetchData();
   }, []);
 
-  if (games.length === 0) {
-    return <div>Loading...</div>;
-  }
-
   const firstGame = games[0];
 
   return (
     <div>
       <h1 id="games-heading">MY GAMES</h1>
-      <ul className="game-list">
-        <li id={`game-${firstGame.id}`} key={firstGame.id} className="game-card">
-          <Link to={`/game/${firstGame.slug}`}>
-            <h2>{firstGame.name}</h2>
-            <img src={firstGame.background_image} alt={firstGame.name} />
-            <p><strong>Release Date:</strong> {firstGame.released}</p>
-            <p><strong>Genres:</strong> {firstGame.genres.map(genre => genre.name).join(', ')}</p>
-            <button id="view-button" className="view-button">View details</button>
-          </Link>
-        </li>
-        {games.slice(1).map((game) => (
-          <li id={`game-${game.id}`} key={game.id} className="game-card">
-            <div>
-              <h2>{game.name}</h2>
-              <img src={game.background_image} alt={game.name} />
-              <p><strong>Release Date:</strong> {game.released}</p>
-              <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
-              <button id="view-button" className="view-button" disabled>View details</button>
-            </div>
+      {games.length > 0 ? (
+        <ul className="game-list">
+          <li id={`game-${firstGame.id}`} key={firstGame.id} className="game-card">
+            <Link to={`/game/${firstGame.slug}`}>
+              <h2>{firstGame.name}</h2>
+              <img src={firstGame.background_image} alt={firstGame.name} />
+              <p><strong>Release Date:</strong> {firstGame.released}</p>
+              <p><strong>Genres:</strong> {firstGame.genres.map(genre => genre.name).join(', ')}</p>
+              <button id="view-button" className="view-button">View details</button>
+            </Link>
           </li>
-        ))}
-      </ul>
+          {games.slice(1).map((game) => (
+            <li id={`game-${game.id}`} key={game.id} className="game-card">
+              <div>
+                <h2>{game.name}</h2>
+                <img src={game.background_image} alt={game.name} />
+                <p><strong>Release Date:</strong> {game.released}</p>
+                <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
+                <button id="view-button" className="view-button" disabled>View details</button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      ) : null}
       <footer>
-          <p>
-            Powered by <a href="https://rawg.io/">RAWG API</a>
-          </p>
-        </footer>
+        <p>
+          Powered by <a href="https://rawg.io/">RAWG API</a>
+        </p>
+      </footer>
     </div>
   );
 }

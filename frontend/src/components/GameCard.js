@@ -12,20 +12,16 @@ function GameCard() {
     fetchData();
   }, []);
 
-  if (!game) {
-    return <p>Loading game data...</p>;
-  }
-
   return (
-    <div id={`game-${game.id}`} className="game-card">
-      <h2>{game.name}</h2>
-      <img src={game.background_image} alt={game.name} />
-      <p><strong>Id:</strong> {game.id}</p>
-      <p><strong>Release Date:</strong> {game.released}</p>
-      <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
-      <p><strong>Game Link:</strong> <a href={game.website} target="_blank" rel="noopener noreferrer">{game.name} on RAWG.io</a></p>
-      <p><strong>Game Image:</strong> {game.background_image}</p>
-      <a href={game.website} target="_blank" rel="noopener noreferrer">
+    <div id={`game-${game?.id}`} className="game-card">
+      <h2>{game?.name}</h2>
+      <img src={game?.background_image} alt={game?.name} />
+      <p><strong>Id:</strong> {game?.id}</p>
+      <p><strong>Release Date:</strong> {game?.released}</p>
+      <p><strong>Genres:</strong> {game?.genres?.map(genre => genre.name).join(', ')}</p>
+      <p><strong>Game Link:</strong> <a href={game?.website} target="_blank" rel="noopener noreferrer">{game?.name} on RAWG.io</a></p>
+      <p><strong>Game Image:</strong> {game?.background_image}</p>
+      <a href={game?.website} target="_blank" rel="noopener noreferrer">
         <button id="buy-button" className="buy-button">Buy Now</button>
       </a>
       <footer>

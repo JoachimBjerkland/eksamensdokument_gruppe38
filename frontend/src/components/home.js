@@ -31,8 +31,23 @@ function Home() {
       <button id="visit-shop" className="visit-shop">Visit shop</button>
       <ul className="game-list">
         {recentGames.map(game => (
-          <div id={`game-card-${game.id}`} className="game-card" key={game.id}>
-            <li className="game-info">
+          <li id={`game-card-${game.id}`} className="game-card" key={game.id}>
+            <a href="/gamecard">
+              <h3>{game.name}</h3>
+              <img src={game.background_image} alt={game.name} />
+              <p><strong>Release Date:</strong> {game.released}</p>
+              <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
+              <button id={`buy-button-${game.id}`} className="buy-button">Buy</button>
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <div id="favorite-games">
+        <h2 id="favorite-heading">MY FAVORITES</h2>
+        <ul className="game-list">
+          {favoriteGames.map(game => (
+            <li id={`favorite-card-${game.id}`} className="game-card" key={game.id}>
               <a href="/gamecard">
                 <h3>{game.name}</h3>
                 <img src={game.background_image} alt={game.name} />
@@ -41,26 +56,8 @@ function Home() {
                 <button id={`buy-button-${game.id}`} className="buy-button">Buy</button>
               </a>
             </li>
-          </div>
-        ))}
-      </ul>
-
-      <div id="favorite-games">
-        <h2 id="favorite-heading">MY FAVORITES</h2>
-        <ul className="game-list">
-          {favoriteGames.map(game => (
-            <div id={`favorite-card-${game.id}`} className="game-card" key={game.id}>
-              <li className="game-info">
-                <a href="/gamecard">
-                  <h3>{game.name}</h3>
-                  <img src={game.background_image} alt={game.name} />
-                  <p><strong>Release Date:</strong> {game.released}</p>
-                  <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
-                  <button id={`buy-button-${game.id}`} className="buy-button">Buy</button>
-                </a>
-              </li>
-            </div>
           ))}
+          <button id="visit-favorite-games" className="visit-favorite-games">Visit favorite games</button>
         </ul>
       </div>
 
@@ -68,18 +65,17 @@ function Home() {
         <h2 id="game-library-heading">MY GAME-LIBRARY - {myGames.length} games</h2>
         <ul className="game-list">
           {myGames.map(game => (
-            <div id="game-card" className="game-card" key={game.id}>
-              <li className="game-info">
-                <a href="/gamecard">
-                  <h3>{game.name}</h3>
-                  <img src={game.background_image} alt={game.name} />
-                  <p><strong>Release Date:</strong> {game.released}</p>
-                  <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
-                  <button id="buy-button" className="buy-button">Buy</button>
-                </a>
-              </li>
-            </div>
+            <li id={`game-card-${game.id}`} className="game-card" key={game.id}>
+              <a href="/gamecard">
+                <h3>{game.name}</h3>
+                <img src={game.background_image} alt={game.name} />
+                <p><strong>Release Date:</strong> {game.released}</p>
+                <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
+                <button id={`buy-button-${game.id}`} className="buy-button">Buy</button>
+              </a>
+            </li>
           ))}
+          <button id="visit-game-library" className="visit-game-library">Visit games library</button>
         </ul>
         <footer>
           <p>

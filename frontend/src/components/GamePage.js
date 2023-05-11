@@ -13,25 +13,25 @@ function GamePage() {
     fetchGame();
   }, [gameId]);
 
-  if (!game) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <div className="game-card">
-      <h2>{game.name}</h2>
-      <img src={game.background_image} alt={game.name} />
-      <p><strong>Id:</strong> {game.id}</p>
-      <p><strong>Release Date:</strong> {game.released}</p>
-      <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
-      <p><strong>Game Link:</strong> <a href={game.website} target="_blank" rel="noopener noreferrer">{game.website}</a></p>
-      <p><strong>Game Image:</strong> {game.background_image}</p>
-      <a href={game.website} target="_blank" rel="noopener noreferrer">
-        <button className="buy-button">Buy Now</button>
-      </a>
-      <footer>
-        <p>Powered by <a href="https://rawg.io/">RAWG API</a></p>
-      </footer>
+      {game && (
+        <>
+          <h2>{game.name}</h2>
+          <img src={game.background_image} alt={game.name} />
+          <p><strong>Id:</strong> {game.id}</p>
+          <p><strong>Release Date:</strong> {game.released}</p>
+          <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
+          <p><strong>Game Link:</strong> <a href={game.website} target="_blank" rel="noopener noreferrer">{game.website}</a></p>
+          <p><strong>Game Image:</strong> {game.background_image}</p>
+          <a href={game.website} target="_blank" rel="noopener noreferrer">
+            <button className="buy-button">Buy Now</button>
+          </a>
+          <footer>
+            <p>Powered by <a href="https://rawg.io/">RAWG API</a></p>
+          </footer>
+        </>
+      )}
     </div>
   );
 }
