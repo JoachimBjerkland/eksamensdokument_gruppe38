@@ -19,7 +19,7 @@ function MyGames() {
 
   return (
     <div>
-      <h1 id="games-heading">MY GAMES</h1>
+      <h1 id="heading">MY GAMES</h1>
       {games.length > 0 ? (
         <ul className="game-list">
           <li id={`game-${firstGame.id}`} key={firstGame.id} className="game-card">

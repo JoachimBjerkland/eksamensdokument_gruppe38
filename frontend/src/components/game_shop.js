@@ -11,8 +11,7 @@ function GameShop() {
 
   return (
     <div id="gameshop">
-      <h1 id="gameshop-heading">GAMESHOP</h1>
-
+      <h1 id="heading">GAMESHOP</h1>
       <h2>All games:</h2>
       <ul>
         {shopGames.map((game) => (

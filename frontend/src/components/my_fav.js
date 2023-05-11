@@ -16,7 +16,7 @@ function FavGames() {
 
   return (
     <div>
-      <h1 id="fav-heading">MY FAVORITE GAMES</h1>
+      <h1 id="heading">MY FAVORITE GAMES</h1>
       <ul id="fav-games-list">
         {favoriteGames.map((game, index) => (
           <li key={game.id}>
