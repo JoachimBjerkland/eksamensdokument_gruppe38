@@ -146,13 +146,16 @@ padding: 8px 16px;
   color: white;
   font-size: 24px;
   padding: 8px 16px;
+  position: absolute;
+  margin-top: 950px;
+  margin-left: -1000px;
   }
 
 .game-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 16px;
+  gap: 10px;
   margin: 0;
   padding: 0;
   list-style-type: none;
