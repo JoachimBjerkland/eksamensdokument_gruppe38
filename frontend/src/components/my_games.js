@@ -7,7 +7,7 @@ function MyGames() {
   useEffect(() => {
     const fetchData = async () => {
       const apiKey = '84ac59c1218a4dc4a60287a81d0a0fbd';
-      const url = `https://api.rawg.io/api/games?key=${apiKey}&dates=2019-09-01,2019-09-30&platforms=18,1,7&page_size=40`;
+      const url = `https://api.rawg.io/api/games?key=${apiKey}&dates=2019-09-01,2019-09-30&platforms=18,1,7&page_size=40&genres=4`;
       const response = await fetch(url);
       const data = await response.json();
       setGames(data.results);
@@ -19,7 +19,7 @@ function MyGames() {
 
   return (
     <div>
-      <h1 id="heading">MY GAMES</h1>
+      <h1 id="games-heading">MY GAMES</h1>
       {games.length > 0 ? (
         <ul className="game-list">
           <li id={`game-${firstGame.id}`} key={firstGame.id} className="game-card">

@@ -12,7 +12,7 @@ function Home() {
         setRecentGames(data.results);
       })
 
-    fetch('https://api.rawg.io/api/games?key=84ac59c1218a4dc4a60287a81d0a0fbd&page_size=4')
+    fetch('https://api.rawg.io/api/games?key=84ac59c1218a4dc4a60287a81d0a0fbd&page_size=4&genres=4')
       .then(res => res.json())
       .then(data => {
         setMyGames(data.results);
