@@ -162,18 +162,24 @@ padding: 8px 16px;
 }
 
 #visit-favorite-games {
+  display: flex;
   background-color: black;
   color: white;
   font-size: 24px;
   padding: 8px 16px;
+  margin-left: 77%;
+  margin-bottom: 50px;
+  margin-top: -50px;
   }
 
 #visit-game-library {
+  display: flex;
   background-color: black;
   color: white;
   font-size: 24px;
   padding: 8px 16px;
- 
+  margin-top: 50px;
+  margin-left: 80px;
   }
 
 .game-list {
