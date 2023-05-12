@@ -28,11 +28,6 @@ function GameDetails({ match }) {
         <a href={game.website} target="_blank" rel="noopener noreferrer">
           <button id="buy-button" className="buy-button">Buy</button>
         </a>
-        <footer>
-          <p>
-            Powered by <a href="https://rawg.io/">RAWG API</a>
-          </p>
-        </footer>
       </div>
     </div>
   );

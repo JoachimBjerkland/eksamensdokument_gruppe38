@@ -50,6 +50,10 @@ function App() {
     content = <Home navigateToGameCard={navigateToGameCard} />;
   }
 
+  const showVisitShopButton = currentPage === 'Home';
+  const showVisitFavGamesButten = currentPage === 'Home';
+  const showVisitGameLibraryButton = currentPage === 'Home';
+
   return (
     <div>
       <nav className="header-nav">
@@ -60,12 +64,20 @@ function App() {
         <button onClick={navigateToGameShop}>Game Shop</button>
         <button onClick={() => navigateToGameCard({title: "Example Game", img: "https://example.com/game.png", id: 1, released: "2021-01-01", genres: ["Action", "Adventure"], link: "https://example.com", fav: false})}>Game Card</button>
         <button onClick={navigateToGamePage}>Game Page</button>
-
       </nav>
+      {showVisitShopButton && <button id="visit-shop" className="visit-shop" onClick={navigateToGameShop}>Visit shop</button>}
       {content}
+      {showVisitFavGamesButten && <button id="visit-favorite-games" className="visit-favorite-games" onClick={navigateToMyFavorites}>Visit favorite games</button>}
+      {showVisitGameLibraryButton && <button id="visit-game-library" className="visit-game-library" onClick={navigateToMyGames}>Visit games library</button>}
+        <footer>
+          <p>
+            Powered by <a href="https://rawg.io/">RAWG API</a>
+          </p>
+        </footer>
     </div>
   );
 }
+
 
 export default App;
 

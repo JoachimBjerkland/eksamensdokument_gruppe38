@@ -29,12 +29,6 @@ function GameShop() {
           </li>
         ))}
       </ul>
-
-      <footer>
-        <p>
-          Powered by <a href="https://rawg.io/">RAWG API</a>
-        </p>
-      </footer>
     </div>
   );
 }

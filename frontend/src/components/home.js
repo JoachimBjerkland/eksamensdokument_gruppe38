@@ -28,7 +28,6 @@ function Home() {
   return (
     <div>
       <h1 id="home-heading">GAMESHOP</h1>
-      <button id="visit-shop" className="visit-shop">Visit shop</button>
       <ul className="game-list">
         {recentGames.map(game => (
           <li id={`game-card-${game.id}`} className="game-card" key={game.id}>
@@ -57,7 +56,6 @@ function Home() {
               </a>
             </li>
           ))}
-          <button id="visit-favorite-games" className="visit-favorite-games">Visit favorite games</button>
         </ul>
       </div>
 
@@ -75,13 +73,7 @@ function Home() {
               </a>
             </li>
           ))}
-          <button id="visit-game-library" className="visit-game-library">Visit games library</button>
         </ul>
-        <footer>
-          <p>
-            Powered by <a href="https://rawg.io/">RAWG API</a>
-          </p>
-        </footer>
       </div>
     </div>
   );
