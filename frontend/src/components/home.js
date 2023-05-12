@@ -6,7 +6,7 @@ function Home() {
   const [favoriteGames, setFavoriteGames] = useState([]);
 
   useEffect(() => {
-    fetch('https://api.rawg.io/api/games?key=84ac59c1218a4dc4a60287a81d0a0fbd&dates=2023-01-01,2023-05-08&ordering=-released&page_size=3')
+    fetch('https://api.rawg.io/api/games?key=84ac59c1218a4dc4a60287a81d0a0fbd&dates=2023-01-01,2023-05-08&ordering=-released&page_size=3&genres=4')
       .then(res => res.json())
       .then(data => {
         setRecentGames(data.results);
