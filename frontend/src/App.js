@@ -67,8 +67,8 @@ function App() {
       </nav>
       {showVisitShopButton && <button id="visit-shop" className="visit-shop" onClick={navigateToGameShop}>Visit shop</button>}
       {content}
-      {showVisitFavGamesButten && <button id="visit-favorite-games" className="visit-favorite-games" onClick={navigateToMyFavorites}>Visit favorite games</button>}
       {showVisitGameLibraryButton && <button id="visit-game-library" className="visit-game-library" onClick={navigateToMyGames}>Visit games library</button>}
+      {showVisitFavGamesButten && <button id="visit-favorite-games" className="visit-favorite-games" onClick={navigateToMyFavorites}>Visit favorite games</button>}
         <footer>
           <p>
             Powered by <a href="https://rawg.io/">RAWG API</a>
