@@ -11,7 +11,8 @@ function GameShop() {
 
   return (
     <div id="gameshop">
-      <h1 id="heading">GAMESHOP</h1>
+      <h1 id="gameshop-heading">GAMESHOP</h1>
+
       <h2>All games:</h2>
       <ul>
         {shopGames.map((game) => (
@@ -21,7 +22,7 @@ function GameShop() {
               <h3>{game.name}</h3>
               <p className="release-date"><strong>Release Date:</strong> {game.released}</p>
               <p className="genres"><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
-              <a href={game.website} target="_blank" rel="noopener noreferrer">
+              <a href={`https://rawg.io/games/${game.slug}`} target="_blank" rel="noopener noreferrer">
                 <button className="buy-button">Buy</button>
               </a>
             </div>
