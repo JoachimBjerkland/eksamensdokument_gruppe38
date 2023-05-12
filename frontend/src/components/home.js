@@ -52,7 +52,6 @@ function Home() {
                 <img src={game.background_image} alt={game.name} />
                 <p><strong>Release Date:</strong> {game.released}</p>
                 <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
-                <button id={`buy-button-${game.id}`} className="buy-button">Buy</button>
               </a>
             </li>
           ))}
@@ -69,7 +68,6 @@ function Home() {
                 <img src={game.background_image} alt={game.name} />
                 <p><strong>Release Date:</strong> {game.released}</p>
                 <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
-                <button id={`buy-button-${game.id}`} className="buy-button">Buy</button>
               </a>
             </li>
           ))}
