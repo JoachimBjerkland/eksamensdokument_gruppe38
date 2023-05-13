@@ -3,7 +3,6 @@ import GamePage from './GamePage';
 
 function FavGames() {
   const [favoriteGames, setFavoriteGames] = useState([]);
-  const [favorites, setFavorites] = useState([]);
   const [selectedGameId, setSelectedGameId] = useState(null);
 
   useEffect(() => {
@@ -16,11 +15,6 @@ function FavGames() {
     fetchData();
   }, []);
 
-  const handleAddToFavorites = (game) => {
-    console.log(`Added game ${game.name} to favorites`);
-    setFavorites([...favorites, game]);
-  };
-
   const handleGameClick = (gameId) => {
     setSelectedGameId(gameId);
   };
@@ -29,39 +23,23 @@ function FavGames() {
     setSelectedGameId(null);
   };
 
+  const handleRemoveGame = (gameId) => {
+    const updatedGames = favoriteGames.filter(game => game.id !== gameId);
+    setFavoriteGames(updatedGames);
+  };
+
   return (
     <div>
       <h1 id="fav-heading">MY FAVORITE GAMES</h1>
       <ul id="fav-games-list">
-        {favorites.map((game, index) => (
+        {favoriteGames.map((game, index) => (
           <li key={game.id}>
             <h2>{game.name}</h2>
             <img src={game.background_image} alt={game.name} />
             <p><strong>Release Date:</strong> {game.released}</p>
             <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
-          </li>
-        ))}
-        {favoriteGames.map((game, index) => (
-          <li key={game.id}>
-            {index === 0 ? (
-              <>
-                <h2>{game.name}</h2>
-                <img src={game.background_image} alt={game.name} />
-                <p><strong>Release Date:</strong> {game.released}</p>
-                <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
-                <button className="add-to-favorites-button" onClick={() => handleAddToFavorites(game)}>Add to Favorites</button>
-                <button onClick={() => handleGameClick(game.id)}>View Game Details</button>
-              </>
-            ) : (
-              <>
-                <h2>{game.name}</h2>
-                <img src={game.background_image} alt={game.name} />
-                <p><strong>Release Date:</strong> {game.released}</p>
-                <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
-                <button className="add-to-favorites-button" onClick={() => handleAddToFavorites(game)}>Add to Favorites</button>
-                <button onClick={() => handleGameClick(game.id)}>View Game Details</button>
-              </>
-            )}
+            <button onClick={() => handleGameClick(game.id)}>View Game Details</button>
+            <button onClick={() => handleRemoveGame(game.id)}>Remove From Favorites</button>
           </li>
         ))}
       </ul>
@@ -76,9 +54,6 @@ function FavGames() {
 }
 
 export default FavGames;
-
-
-
 
 
 //Kilder: https://stackoverflow.com/questions/38486660/how-to-add-a-classname-id-to-react-bootstrap-component
