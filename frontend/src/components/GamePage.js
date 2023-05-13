@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 
-function GamePage() {
+function GamePage(props) {
   const [game, setGame] = useState(null);
-  const gameId = 3498;
+  const { gameId } = props;
 
   useEffect(() => {
     const fetchGame = async () => {
@@ -25,7 +25,6 @@ function GamePage() {
           <p><strong>Game Link:</strong> <a href={game.website} target="_blank" rel="noopener noreferrer">{game.website}</a></p>
           <p><strong>Game Image:</strong> {game.background_image}</p>
           <a href={game.website} target="_blank" rel="noopener noreferrer">
-            <button className="buy-button">Buy Now</button>
           </a>
         </>
       )}
@@ -34,9 +33,6 @@ function GamePage() {
 }
 
 export default GamePage;
-
-
-
 
 
 //Kilder: https://stackoverflow.com/questions/38486660/how-to-add-a-classname-id-to-react-bootstrap-component

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import GamePage from './GamePage';
 
 function FavGames() {
   const [favoriteGames, setFavoriteGames] = useState([]);
+  const [favorites, setFavorites] = useState([]);
+  const [selectedGameId, setSelectedGameId] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -14,33 +16,61 @@ function FavGames() {
     fetchData();
   }, []);
 
+  const handleAddToFavorites = (game) => {
+    console.log(`Added game ${game.name} to favorites`);
+    setFavorites([...favorites, game]);
+  };
+
+  const handleGameClick = (gameId) => {
+    setSelectedGameId(gameId);
+  };
+
+  const handleCloseGamePage = () => {
+    setSelectedGameId(null);
+  };
+
   return (
     <div>
       <h1 id="fav-heading">MY FAVORITE GAMES</h1>
       <ul id="fav-games-list">
+        {favorites.map((game, index) => (
+          <li key={game.id}>
+            <h2>{game.name}</h2>
+            <img src={game.background_image} alt={game.name} />
+            <p><strong>Release Date:</strong> {game.released}</p>
+            <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
+          </li>
+        ))}
         {favoriteGames.map((game, index) => (
           <li key={game.id}>
             {index === 0 ? (
-              <Link to={`/GamePage.js/${game.slug}`}>
+              <>
                 <h2>{game.name}</h2>
                 <img src={game.background_image} alt={game.name} />
                 <p><strong>Release Date:</strong> {game.released}</p>
                 <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
-                <button className="view-details-button">View Details</button>
-              </Link>
+                <button className="add-to-favorites-button" onClick={() => handleAddToFavorites(game)}>Add to Favorites</button>
+                <button onClick={() => handleGameClick(game.id)}>View Game Details</button>
+              </>
             ) : (
               <>
                 <h2>{game.name}</h2>
                 <img src={game.background_image} alt={game.name} />
                 <p><strong>Release Date:</strong> {game.released}</p>
                 <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
-                <button className="view-details-button">View Details</button>
-
+                <button className="add-to-favorites-button" onClick={() => handleAddToFavorites(game)}>Add to Favorites</button>
+                <button onClick={() => handleGameClick(game.id)}>View Game Details</button>
               </>
             )}
           </li>
         ))}
       </ul>
+      {selectedGameId && (
+        <div className="game-page-modal">
+          <button className="close-button" onClick={handleCloseGamePage}>X</button>
+          <GamePage gameId={selectedGameId} />
+        </div>
+      )}
     </div>
   );
 }

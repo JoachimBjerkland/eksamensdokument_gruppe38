@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
 
 function Home() {
   const [recentGames, setRecentGames] = useState([]);
@@ -29,51 +31,88 @@ function Home() {
     <div>
       <h1 id="home-heading">GAMESHOP</h1>
       <ul className="game-list">
-        {recentGames.map(game => (
+        {recentGames.map((game, index) => (
           <li id={`game-card-${game.id}`} className="game-card" key={game.id}>
-            <a href="/gamecard">
-              <h3>{game.name}</h3>
-              <img src={game.background_image} alt={game.name} />
-              <p><strong>Release Date:</strong> {game.released}</p>
-              <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
-              <button id={`buy-button-${game.id}`} className="buy-button">Buy</button>
-            </a>
+            {index === 0 ? (
+              <Link to={`/game_card/${game.id}`}>
+                <h3>{game.name}</h3>
+                <img src={game.background_image} alt={game.name} />
+                <p><strong>Release Date:</strong> {game.released}</p>
+                <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
+                <button id={`buy-button-${game.id}`} className="buy-button">Buy</button>
+              </Link>
+            ) : (
+              <div>
+                <h3>{game.name}</h3>
+                <img src={game.background_image} alt={game.name} />
+                <p><strong>Release Date:</strong> {game.released}</p>
+                <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
+                <button id={`buy-button-${game.id}`} className="buy-button">Buy</button>
+              </div>
+            )}
           </li>
         ))}
       </ul>
 
       <div id="favorite-games">
-        <h2 id="favorite-heading">MY FAVORITES</h2>
-        <ul className="game-list">
-          {favoriteGames.map(game => (
-            <li id={`favorite-card-${game.id}`} className="game-card" key={game.id}>
-              <a href="/gamecard">
-                <h3>{game.name}</h3>
-                <img src={game.background_image} alt={game.name} />
-                <p><strong>Release Date:</strong> {game.released}</p>
-                <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
+  <h2 id="favorite-heading">MY FAVORITES</h2>
+  <ul className="game-list">
+    {favoriteGames.map(game => (
+      <li id={`favorite-card-${game.id}`} className="game-card" key={game.id}>
+        <a href="/gamecard">
+          <h3>{game.name}</h3>
+          <img src={game.background_image} alt={game.name} />
+          <p><strong>Release Date:</strong> {game.released}</p>
+          <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
+        </a>
+        <button
+          className="favorite-button"
+          onClick={() => {
+            const newFavorites = favoriteGames.filter(favorite => favorite.id !== game.id);
+            setFavoriteGames(newFavorites);
+            console.log(`Removed ${game.name} from favorites`);
+          }}
+        >
+          Fjern fra favoritter
+        </button>
+      </li>
+    ))}
+  </ul>
+</div>
 
-      <div>
-        <h2 id="game-library-heading">MY GAME-LIBRARY - {myGames.length} games</h2>
-        <ul className="game-list">
-          {myGames.map(game => (
-            <li id={`game-card-${game.id}`} className="game-card" key={game.id}>
-              <a href="/gamecard">
-                <h3>{game.name}</h3>
-                <img src={game.background_image} alt={game.name} />
-                <p><strong>Release Date:</strong> {game.released}</p>
-                <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
+
+<div>
+  <h2 id="game-library-heading">MY GAME-LIBRARY - {myGames.length} games</h2>
+  <ul className="game-list">
+    {myGames.map(game => (
+      <li id={`game-card-${game.id}`} className="game-card" key={game.id}>
+        <a href="/gamecard">
+          <h3>{game.name}</h3>
+          <img src={game.background_image} alt={game.name} />
+          <p><strong>Release Date:</strong> {game.released}</p>
+          <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
+        </a>
+        <button
+          className="favorite-button"
+          onClick={() => {
+            const favoriteIndex = favoriteGames.findIndex(favorite => favorite.id === game.id);
+            if (favoriteIndex === -1) {
+              setFavoriteGames([...favoriteGames, game]);
+            } else {
+              const newFavorites = [...favoriteGames];
+              newFavorites.splice(favoriteIndex, 1);
+              setFavoriteGames(newFavorites);
+            }
+          }}
+        >
+          {favoriteGames.some(favorite => favorite.id === game.id) ? "Fjern fra favoritter" : "Legg til favoritter"}
+        </button>
+      </li>
+    ))}
+  </ul>
+</div>
+</div>
+
   );
 }
 
