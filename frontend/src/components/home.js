@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-
+import GamePage from "./GamePage";
 
 function Home() {
+  const [gameId, navigateToGamePage] = useState(null);
   const [recentGames, setRecentGames] = useState([]);
   const [myGames, setMyGames] = useState([]);
   const [favoriteGames, setFavoriteGames] = useState([]);
@@ -27,44 +27,67 @@ function Home() {
       })
   }, []);
 
-  return (
-    <div>
-      <h1 id="home-heading">GAMESHOP</h1>
+  /*function navigateToGamePage(gameId) {
+    window.location.href = /gamepage/${gameId};
+  }*/
+  
+return (
+<div>
+<h1 id="home-heading">GAMESHOP</h1>
       <ul className="game-list">
         {recentGames.map((game, index) => (
           <li id={`game-card-${game.id}`} className="game-card" key={game.id}>
             {index === 0 ? (
-              <Link to={`/game_card/${game.id}`}>
+              <>
                 <h3>{game.name}</h3>
                 <img src={game.background_image} alt={game.name} />
                 <p><strong>Release Date:</strong> {game.released}</p>
                 <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
-                <button id={`buy-button-${game.id}`} className="buy-button">Buy</button>
-              </Link>
+                <div className="button-container">
+                  <button
+                    id={`buy-button-${game.id}`}
+                    className="buy-button"
+                    onClick={() => (window.location.href = `https://rawg.io/games/${game.slug}`)}
+                  >
+                    Buy
+                  </button>
+                  <button id={`details-button-${game.id}`}className="details-button"onClick={() =>navigateToGamePage(game.id)}>View Details</button>
+            </div>
+              </>
             ) : (
-              <div>
+              <>
                 <h3>{game.name}</h3>
                 <img src={game.background_image} alt={game.name} />
                 <p><strong>Release Date:</strong> {game.released}</p>
                 <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
-                <button id={`buy-button-${game.id}`} className="buy-button">Buy</button>
-              </div>
+                <div className="button-container">
+                  <button
+                    id={`buy-button-${game.id}`}
+                    className="buy-button"
+                    onClick={() => (window.location.href = `https://rawg.io/games/${game.slug}`)}
+                  >
+                    Buy
+                  </button>
+                </div>
+              </>
             )}
           </li>
         ))}
       </ul>
+      {gameId && <GamePage gameId={gameId} />}
 
-      <div id="favorite-games">
+    
+  <div id="favorite-games">
   <h2 id="favorite-heading">MY FAVORITES</h2>
   <ul className="game-list">
     {favoriteGames.map(game => (
       <li id={`favorite-card-${game.id}`} className="game-card" key={game.id}>
-        <a href="/gamecard">
+        <div>
           <h3>{game.name}</h3>
           <img src={game.background_image} alt={game.name} />
           <p><strong>Release Date:</strong> {game.released}</p>
           <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
-        </a>
+        </div>
         <button
           className="favorite-button"
           onClick={() => {
@@ -79,40 +102,39 @@ function Home() {
     ))}
   </ul>
 </div>
-
-
 <div>
   <h2 id="game-library-heading">MY GAME-LIBRARY - {myGames.length} games</h2>
   <ul className="game-list">
     {myGames.map(game => (
       <li id={`game-card-${game.id}`} className="game-card" key={game.id}>
-        <a href="/gamecard">
+        <div>
           <h3>{game.name}</h3>
           <img src={game.background_image} alt={game.name} />
           <p><strong>Release Date:</strong> {game.released}</p>
           <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
-        </a>
-        <button
-          className="favorite-button"
-          onClick={() => {
-            const favoriteIndex = favoriteGames.findIndex(favorite => favorite.id === game.id);
-            if (favoriteIndex === -1) {
-              setFavoriteGames([...favoriteGames, game]);
-            } else {
-              const newFavorites = [...favoriteGames];
-              newFavorites.splice(favoriteIndex, 1);
-              setFavoriteGames(newFavorites);
-            }
-          }}
-        >
-          {favoriteGames.some(favorite => favorite.id === game.id) ? "Fjern fra favoritter" : "Legg til favoritter"}
-        </button>
+        </div>
+        <div>
+          <button
+            className="favorite-button"
+            onClick={() => {
+              const favoriteIndex = favoriteGames.findIndex(favorite => favorite.id === game.id);
+              if (favoriteIndex === -1) {
+                setFavoriteGames([...favoriteGames, game]);
+              } else {
+                const newFavorites = [...favoriteGames];
+                newFavorites.splice(favoriteIndex, 1);
+                setFavoriteGames(newFavorites);
+              }
+            }}
+          >
+            {favoriteGames.some(favorite => favorite.id === game.id) ? "Fjern fra favoritter" : "Legg til favoritter"}
+          </button>
+        </div>
       </li>
     ))}
   </ul>
 </div>
 </div>
-
   );
 }
 

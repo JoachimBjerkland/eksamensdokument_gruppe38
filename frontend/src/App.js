@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.scss';
 import logo from './logos/SVG/macslogo_white.svg';
 import Home from './components/home';
-import MyFavorites from './components/my_fav';
+import FavGames from './components/my_fav';
 import GameShop from './components/game_shop';
 import MyGames from './components/my_games';
 import GameCard from './components/GameCard';
@@ -15,8 +15,8 @@ function App() {
     setCurrentPage('Home');
   };
 
-  const navigateToMyFavorites = () => {
-    setCurrentPage('MyFavorites');
+  const navigateToFavGames = () => {
+    setCurrentPage('FavGames');
   };
 
   const navigateToGameShop = () => {
@@ -36,8 +36,8 @@ function App() {
   };
 
   let content;
-  if (currentPage === 'MyFavorites') {
-    content = <MyFavorites />;
+  if (currentPage === 'FavGames') {
+    content = <FavGames />;
   } else if (currentPage === 'GameShop') {
     content = <GameShop />;
   } else if (currentPage === 'MyGames') {
@@ -50,9 +50,10 @@ function App() {
     content = <Home navigateToGameCard={navigateToGameCard} />;
   }
 
-  const showVisitShopButton = currentPage === 'Home';
-  const showVisitFavGamesButten = currentPage === 'Home';
+  const showVisitFavoriteGamesButton = currentPage === 'Home';
   const showVisitGameLibraryButton = currentPage === 'Home';
+  const showVisitShopButton = currentPage === 'Home';
+
 
   return (
     <div>
@@ -60,7 +61,7 @@ function App() {
         <img src={logo} alt="My logo" onClick={navigateToHome} />
         <button onClick={navigateToHome}>Home</button>
         <button onClick={navigateToMyGames}>My Games</button>
-        <button onClick={navigateToMyFavorites}>My Favorites</button>
+        <button onClick={navigateToFavGames}>My Favorites</button>
         <button onClick={navigateToGameShop}>Game Shop</button>
         <button onClick={() => navigateToGameCard({title: "Example Game", img: "https://example.com/game.png", id: 1, released: "2021-01-01", genres: ["Action", "Adventure"], link: "https://example.com", fav: false})}>Game Card</button>
         <button onClick={navigateToGamePage}>Game Page</button>
@@ -68,12 +69,12 @@ function App() {
       {showVisitShopButton && <button id="visit-shop" className="visit-shop" onClick={navigateToGameShop}>Visit shop</button>}
       {content}
       {showVisitGameLibraryButton && <button id="visit-game-library" className="visit-game-library" onClick={navigateToMyGames}>Visit games library</button>}
-      {showVisitFavGamesButten && <button id="visit-favorite-games" className="visit-favorite-games" onClick={navigateToMyFavorites}>Visit favorite games</button>}
+      {showVisitFavoriteGamesButton && <button id="visit-favorite-games" className="visit-favorite-games" onClick={navigateToFavGames}>Visit favorite games</button>}
         <footer>
           <p>
-            Powered by <a href="https://rawg.io/">RAWG API</a>
-          </p>
-        </footer>
+              Powered by <a href="https://rawg.io/">RAWG API</a>
+          </p>      
+      </footer>
     </div>
   );
 }

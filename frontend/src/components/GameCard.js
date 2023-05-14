@@ -7,7 +7,8 @@ function GameCard() {
     const fetchData = async () => {
       const response = await fetch('https://api.rawg.io/api/games?key=84ac59c1218a4dc4a60287a81d0a0fbd&dates=2019-09-01,2019-09-30&platforms=18,1,7');
       const data = await response.json();
-      setGame(data.results[0]);
+      const randomIndex = Math.floor(Math.random() * data.results.length);
+      setGame(data.results[randomIndex]);
     };
     fetchData();
   }, []);
@@ -22,7 +23,6 @@ function GameCard() {
       <p><strong>Game Link:</strong> <a href={game?.website} target="_blank" rel="noopener noreferrer">{game?.name} on RAWG.io</a></p>
       <p><strong>Game Image:</strong> {game?.background_image}</p>
       <a href={game?.website} target="_blank" rel="noopener noreferrer">
-        <button id="buy-button" className="buy-button">Buy Now</button>
       </a>
     </div>
   );
