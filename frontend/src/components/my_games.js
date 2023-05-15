@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import GamePage from './GamePage';
 
 function MyGames() {
   const [games, setGames] = useState([]);
+  const [isDetailsShown, setIsDetailsShown] = useState(false);
+  const [gameId, setGameId] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,35 +17,46 @@ function MyGames() {
     fetchData();
   }, []);
 
-  const firstGame = games[0];
+  const handleClickDetails = (gameId, index) => {
+    if (index === 0) {
+      setIsDetailsShown(true);
+      setGameId(gameId);
+    }
+  };
+
+  const handleCloseDetails = () => {
+    setIsDetailsShown(false);
+    setGameId(null);
+  };
 
   return (
     <div>
       <h1 id="games-heading">MY GAMES</h1>
       {games.length > 0 ? (
         <ul className="game-list">
-          <li id={`game-${firstGame.id}`} key={firstGame.id} className="game-card">
-            <Link to={`/game/${firstGame.slug}`}>
-              <h2>{firstGame.name}</h2>
-              <img src={firstGame.background_image} alt={firstGame.name} />
-              <p><strong>Release Date:</strong> {firstGame.released}</p>
-              <p><strong>Genres:</strong> {firstGame.genres.map(genre => genre.name).join(', ')}</p>
-              <button id="view-button" className="view-button">View details</button>
-            </Link>
-          </li>
-          {games.slice(1).map((game) => (
+          {games.map((game, index) => (
             <li id={`game-${game.id}`} key={game.id} className="game-card">
-              <div>
+              <div className="game-info">
                 <h2>{game.name}</h2>
                 <img src={game.background_image} alt={game.name} />
-                <p><strong>Release Date:</strong> {game.released}</p>
-                <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
-                <button id="view-button" className="view-button" disabled>View details</button>
+                <p>
+                  <strong>Release Date:</strong> {game.released}
+                </p>
+                <p>
+                  <strong>Genres:</strong> {game.genres.map((genre) => genre.name).join(', ')}
+                </p>
               </div>
+              <button id={`view-button-${game.id}`}className="view-button"onClick={() => handleClickDetails(game.id, index)}>View Details</button>
             </li>
           ))}
         </ul>
       ) : null}
+      {isDetailsShown && gameId && (
+        <div className="game-details">
+          <GamePage gameId={gameId} />
+          <button onClick={handleCloseDetails} className="close-button">&#x2716;</button>
+        </div>
+      )}
     </div>
   );
 }

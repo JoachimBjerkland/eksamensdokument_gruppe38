@@ -11,7 +11,7 @@ import GamePage from './components/GamePage';
 function App() {
   const [currentPage, setCurrentPage] = useState('Home');
   const [currentGame, setCurrentGame] = useState(null);
-  const [setGameId] = useState(null);
+  const [gameId, setGameId] = useState(null);
 
 
   const navigateToHome = () => {
@@ -85,6 +85,7 @@ function App() {
 }
 
 export default App;
+
 
 
 //Kilder: https://stackoverflow.com/questions/38486660/how-to-add-a-classname-id-to-react-bootstrap-component
