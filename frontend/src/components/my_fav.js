@@ -7,7 +7,8 @@ function FavGames() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const url = 'https://api.rawg.io/api/games?key=84ac59c1218a4dc4a60287a81d0a0fbd&dates=2019-09-01,2019-09-30&platforms=18,1,7';
+      const url =
+        'https://api.rawg.io/api/games?key=84ac59c1218a4dc4a60287a81d0a0fbd&dates=2019-09-01,2019-09-30&platforms=18,1,7';
       const response = await fetch(url);
       const data = await response.json();
       setFavoriteGames(data.results.slice(0, 20));
@@ -19,25 +20,26 @@ function FavGames() {
     setSelectedGameId(gameId);
   };
 
-  const handleCloseGamePage = () => {
-    setSelectedGameId(null);
-  };
-
   const handleRemoveGame = (gameId) => {
-    const updatedGames = favoriteGames.filter(game => game.id !== gameId);
+    const updatedGames = favoriteGames.filter((game) => game.id !== gameId);
     setFavoriteGames(updatedGames);
   };
+  
 
   return (
     <div>
       <h1 id="fav-heading">MY FAVORITE GAMES</h1>
       <ul id="fav-games-list">
-        {favoriteGames.map((game, index) => (
+        {favoriteGames.map((game) => (
           <li key={game.id}>
             <h2>{game.name}</h2>
             <img src={game.background_image} alt={game.name} />
-            <p><strong>Release Date:</strong> {game.released}</p>
-            <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
+            <p>
+              <strong>Release Date:</strong> {game.released}
+            </p>
+            <p>
+              <strong>Genres:</strong> {game.genres.map((genre) => genre.name).join(', ')}
+            </p>
             <button onClick={() => handleGameClick(game.id)}>View Game Details</button>
             <button onClick={() => handleRemoveGame(game.id)}>Remove From Favorites</button>
           </li>
@@ -45,7 +47,6 @@ function FavGames() {
       </ul>
       {selectedGameId && (
         <div className="game-page-modal">
-          <button className="close-button" onClick={handleCloseGamePage}>X</button>
           <GamePage gameId={selectedGameId} />
         </div>
       )}
@@ -54,6 +55,8 @@ function FavGames() {
 }
 
 export default FavGames;
+
+
 
 
 //Kilder: https://stackoverflow.com/questions/38486660/how-to-add-a-classname-id-to-react-bootstrap-component
