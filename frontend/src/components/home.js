@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import GamePage from "./GamePage";
 
+
 function Home() {
   const [gameId, navigateToGamePage] = useState(null);
   const [recentGames, setRecentGames] = useState([]);
   const [myGames, setMyGames] = useState([]);
   const [favoriteGames, setFavoriteGames] = useState([]);
+  const [isDetailsShown, setIsDetailsShown] = useState(false);
+  const [favorites, setFavorites] = useState([]);
+
+
 
   useEffect(() => {
     fetch('https://api.rawg.io/api/games?key=84ac59c1218a4dc4a60287a81d0a0fbd&dates=2023-01-01,2023-05-08&ordering=-released&page_size=3&genres=4')
@@ -26,14 +31,27 @@ function Home() {
         setFavoriteGames(data.results);
       })
   }, []);
-
-  /*function navigateToGamePage(gameId) {
-    window.location.href = /gamepage/${gameId};
-  }*/
   
-return (
-<div>
-<h1 id="home-heading">GAMESHOP</h1>
+  const handleCloseDetails = () => {
+    setIsDetailsShown(false);
+  };
+
+  const addToFavorites = (game) => {
+    setFavoriteGames([...favoriteGames, game]);
+    console.log(`Added ${game.name} to favorites`);
+  };
+
+  const removeFromFavorites = (gameId) => {
+    setFavorites(favorites.filter((game) => game.id !== gameId));
+  };
+
+const isInFavorites = (gameId) => {
+  return favorites.some((game) => game.id === gameId);
+};
+
+  return (
+    <div>
+      <h1 id="home-heading">GAMESHOP</h1>
       <ul className="game-list">
         {recentGames.map((game, index) => (
           <li id={`game-card-${game.id}`} className="game-card" key={game.id}>
@@ -51,8 +69,19 @@ return (
                   >
                     Buy
                   </button>
-                  <button id={`details-button-${game.id}`}className="details-button"onClick={() =>navigateToGamePage(game.id)}>View Details</button>
-            </div>
+                  <button id={`details-button-${game.id}`} className="details-button" onClick={() => navigateToGamePage(960602)}>View Details</button>
+                  <button id={`favorite-button-${game.id}`} className="favorite-button" onClick={() => { if (isInFavorites(game.id)) {
+                  removeFromFavorites(game.id);
+                  } else {
+                    addToFavorites(game);}}}>
+                {isInFavorites(game.id) ? 'Remove from Favorites' : 'Add to Favorites'}</button>                
+                </div>
+                {isDetailsShown && gameId === 960602 && (
+                  <div>
+                    <GamePage gameId={gameId} />
+                    <button onClick={handleCloseDetails} className="close-button">&#x2716;</button>
+                  </div>
+                )}
               </>
             ) : (
               <>
@@ -68,6 +97,7 @@ return (
                   >
                     Buy
                   </button>
+                  <button id={`favorite-button-${game.id}`} className="favorite-button" onClick={() => addToFavorites(game)}>Legg til favoritt</button>
                 </div>
               </>
             )}
@@ -76,7 +106,7 @@ return (
       </ul>
       {gameId && <GamePage gameId={gameId} />}
 
-    
+
   <div id="favorite-games">
   <h2 id="favorite-heading">MY FAVORITES</h2>
   <ul className="game-list">
@@ -102,6 +132,9 @@ return (
     ))}
   </ul>
 </div>
+
+
+
 <div>
   <h2 id="game-library-heading">MY GAME-LIBRARY - {myGames.length} games</h2>
   <ul className="game-list">
@@ -130,13 +163,13 @@ return (
             {favoriteGames.some(favorite => favorite.id === game.id) ? "Fjern fra favoritter" : "Legg til favoritter"}
           </button>
         </div>
-      </li>
-    ))}
-  </ul>
-</div>
-</div>
-  );
-}
+        </li>
+      ))}
+    </ul>
+  </div>
+  </div>
+    );
+  }
 
 export default Home;
 

@@ -10,6 +10,9 @@ import GamePage from './components/GamePage';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('Home');
+  const [currentGame, setCurrentGame] = useState(null);
+  const [setGameId] = useState(null);
+
 
   const navigateToHome = () => {
     setCurrentPage('Home');
@@ -28,11 +31,13 @@ function App() {
   };
 
   const navigateToGameCard = (game) => {
-    setCurrentPage({ name: 'GameCard', props: { game: game } });
+    setCurrentGame(game);
+    setCurrentPage('GameCard');
   };  
 
-  const navigateToGamePage = (game) => {
-    setCurrentPage({ name: 'GamePage', props: { game: game } });
+  const navigateToGamePage = (gameId) => {
+    setGameId(gameId);
+    setCurrentPage('GamePage');
   };
 
   let content;
@@ -42,18 +47,18 @@ function App() {
     content = <GameShop />;
   } else if (currentPage === 'MyGames') {
     content = <MyGames navigateToGamePage={navigateToGamePage} navigateToGameCard={navigateToGameCard} />;
-  } else if (currentPage.name === 'GameCard') {
-    content = <GameCard game={currentPage.props.game} />;
-  } else if (currentPage.name === 'GamePage') {
-    content = <GamePage game={currentPage.props.game} />;
+  } else if (currentPage === 'GameCard') {
+    content = <GameCard game={currentGame} navigateToGamePage={navigateToGamePage} />;
+  } else if (currentPage === 'GamePage') {
+    content = <GamePage />;
   } else {
     content = <Home navigateToGameCard={navigateToGameCard} />;
   }
-
+  
   const showVisitFavoriteGamesButton = currentPage === 'Home';
   const showVisitGameLibraryButton = currentPage === 'Home';
   const showVisitShopButton = currentPage === 'Home';
-
+  const gameInfo = currentPage === 'Home';
 
   return (
     <div>
@@ -63,22 +68,21 @@ function App() {
         <button onClick={navigateToMyGames}>My Games</button>
         <button onClick={navigateToFavGames}>My Favorites</button>
         <button onClick={navigateToGameShop}>Game Shop</button>
-        <button onClick={() => navigateToGameCard({title: "Example Game", img: "https://example.com/game.png", id: 1, released: "2021-01-01", genres: ["Action", "Adventure"], link: "https://example.com", fav: false})}>Game Card</button>
-        <button onClick={navigateToGamePage}>Game Page</button>
+        <button onClick={() => navigateToGameCard(gameInfo)}>Game Card</button>
+        <button onClick={() => navigateToGamePage(gameInfo)}>Game Page</button>
       </nav>
       {showVisitShopButton && <button id="visit-shop" className="visit-shop" onClick={navigateToGameShop}>Visit shop</button>}
       {content}
       {showVisitGameLibraryButton && <button id="visit-game-library" className="visit-game-library" onClick={navigateToMyGames}>Visit games library</button>}
       {showVisitFavoriteGamesButton && <button id="visit-favorite-games" className="visit-favorite-games" onClick={navigateToFavGames}>Visit favorite games</button>}
-        <footer>
-          <p>
-              Powered by <a href="https://rawg.io/">RAWG API</a>
-          </p>      
+      <footer>
+        <p>
+          Powered by <a href="https://rawg.io/">RAWG API</a>
+        </p>      
       </footer>
     </div>
-  );
+  );  
 }
-
 
 export default App;
 
