@@ -5,7 +5,7 @@ function GameDetails({ match }) {
 
   useEffect(() => {
     const slug = match.params.slug;
-    const url = `https://api.rawg.io/api/games/${slug}?key=YOUR_API_KEY`;
+    const url = `https://api.rawg.io/api/games/${slug}?key=84ac59c1218a4dc4a60287a81d0a0fbd`;
 
     fetch(url)
       .then(response => response.json())
@@ -13,22 +13,14 @@ function GameDetails({ match }) {
       .catch(error => console.log(error));
   }, [match.params.slug]);
 
-  if (!game) {
-    return <div>Loading...</div>;
-  }
-
   return (
-    <div>
-      <h1 id="game-heading">{game.name}</h1>
-      <div id="game-details">
-        <img src={game.background_image} alt={game.name} />
-        <p><strong>Release Date:</strong> {game.released}</p>
-        <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
-        <p><strong>Description:</strong> {game.description_raw}</p>
-        <a href={game.website} target="_blank" rel="noopener noreferrer">
-          <button id="buy-button" className="buy-button">Buy</button>
-        </a>
-      </div>
+    <div className="game-card">
+      <img src={props.game.background_image} alt={props.game.name} />
+      <h2>{props.game.name}</h2>
+      <button
+        id={`details-button-${props.game.id}`}
+        className="details-button"
+        onClick={() => props.navigateToGamePage(props.game.id)}>View Details</button>
     </div>
   );
 }

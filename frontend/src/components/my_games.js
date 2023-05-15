@@ -46,7 +46,13 @@ function MyGames() {
                   <strong>Genres:</strong> {game.genres.map((genre) => genre.name).join(', ')}
                 </p>
               </div>
-              <button id={`view-button-${game.id}`}className="view-button"onClick={() => handleClickDetails(game.id, index)}>View Details</button>
+              <button
+                id={`view-button-${game.id}`}
+                className="view-button"
+                onClick={() => handleClickDetails(game.id, index)}
+              >
+                View Details
+              </button>
             </li>
           ))}
         </ul>
@@ -54,7 +60,7 @@ function MyGames() {
       {isDetailsShown && gameId && (
         <div className="game-details">
           <GamePage gameId={gameId} />
-          <button onClick={handleCloseDetails} className="close-button">&#x2716;</button>
+        <button onClick={handleCloseDetails} className="close-button">&#x2716;</button>
         </div>
       )}
     </div>
