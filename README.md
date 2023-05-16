@@ -23,6 +23,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 https://www.w3schools.com/html/html_id.asp
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length
+
 https://byby.dev/js-slugify-string (For slug)
 https://dmitripavlutin.com/fetch-with-json/ (Fetch)
 https://legacy.reactjs.org/docs/hooks-effect.html (useEffect)
