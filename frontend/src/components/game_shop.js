@@ -10,10 +10,8 @@ function GameShop() {
   }, []);
 
   return (
-    <div id="gameshop">
-      <h1 id="gameshop-heading">GAMESHOP</h1>
-
-      <h2>All games:</h2>
+    <div>
+      <h1>GAMESHOP</h1>
       <ul>
         {shopGames.map((game) => (
           <li key={game.id}>

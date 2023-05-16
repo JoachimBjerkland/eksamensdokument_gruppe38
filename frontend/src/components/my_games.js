@@ -31,7 +31,7 @@ function MyGames() {
 
   return (
     <div>
-      <h1 id="games-heading">MY GAMES</h1>
+      <h1>MY GAMES</h1>
       {isDetailsShown && gameId && (
         <div className="game-details">
           <GamePage gameId={gameId} />

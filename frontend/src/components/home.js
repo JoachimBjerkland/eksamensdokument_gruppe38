@@ -48,7 +48,7 @@ const isInFavorites = (gameId) => {
 
 return (
 <div>
-  <h1 id="home-heading">GAMESHOP</h1>
+  <h1 >GAMESHOP</h1>
   <ul className="game-list">
     {recentGames.map((game, index) => (
       <li id={`game-card-${game.id}`} className="game-card" key={game.id}>

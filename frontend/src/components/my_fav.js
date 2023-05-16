@@ -27,7 +27,7 @@ const handleRemoveGame = (gameId) => {
   
 return (
   <div>
-    <h1 id="fav-heading">MY FAVORITE GAMES</h1>
+    <h1>MY FAVORITE GAMES</h1>
       {selectedGameId && (
       <div className="game-page-modal">
         <GamePage gameId={selectedGameId} />
