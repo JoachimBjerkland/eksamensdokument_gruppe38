@@ -7,10 +7,10 @@ function GameDetails({ match }) {
     const slug = match.params.slug;
     const url = `https://api.rawg.io/api/games/${slug}?key=84ac59c1218a4dc4a60287a81d0a0fbd`;
 
-    fetch(url)
-      .then(response => response.json())
-      .then(data => setGame(data))
-      .catch(error => console.log(error));
+  fetch(url)
+    .then(response => response.json())
+    .then(data => setGame(data))
+    .catch(error => console.log(error));
   }, [match.params.slug]);
 
   return (

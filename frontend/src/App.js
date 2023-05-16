@@ -55,38 +55,36 @@ function App() {
     content = <Home navigateToGameCard={navigateToGameCard} />;
   }
   
-  const showVisitFavoriteGamesButton = currentPage === 'Home';
-  const showVisitGameLibraryButton = currentPage === 'Home';
-  const showVisitShopButton = currentPage === 'Home';
-  const gameInfo = currentPage === 'Home';
+const showVisitFavoriteGamesButton = currentPage === 'Home';
+const showVisitGameLibraryButton = currentPage === 'Home';
+const showVisitShopButton = currentPage === 'Home';
+const gameInfo = currentPage === 'Home';
 
-  return (
-    <div>
-      <nav className="header-nav">
-        <img src={logo} alt="My logo" onClick={navigateToHome} />
-        <button onClick={navigateToHome}>Home</button>
-        <button onClick={navigateToMyGames}>My Games</button>
-        <button onClick={navigateToFavGames}>My Favorites</button>
-        <button onClick={navigateToGameShop}>Game Shop</button>
-        <button onClick={() => navigateToGameCard(gameInfo)}>Game Card</button>
-        <button onClick={() => navigateToGamePage(gameInfo)}>Game Page</button>
-      </nav>
-      {showVisitShopButton && <button id="visit-shop" className="visit-shop" onClick={navigateToGameShop}>Visit shop</button>}
-      {content}
-      {showVisitGameLibraryButton && <button id="visit-game-library" className="visit-game-library" onClick={navigateToMyGames}>Visit games library</button>}
-      {showVisitFavoriteGamesButton && <button id="visit-favorite-games" className="visit-favorite-games" onClick={navigateToFavGames}>Visit favorite games</button>}
-      <footer>
-        <p>
-          Powered by <a href="https://rawg.io/">RAWG API</a>
-        </p>      
-      </footer>
-    </div>
+return (
+  <div>
+    <nav className="header-nav">
+      <img src={logo} alt="My logo" onClick={navigateToHome} />
+      <button onClick={navigateToHome}>Home</button>
+      <button onClick={navigateToMyGames}>My Games</button>
+      <button onClick={navigateToFavGames}>My Favorites</button>
+      <button onClick={navigateToGameShop}>Game Shop</button>
+      <button onClick={() => navigateToGameCard(gameInfo)}>Game Card</button>
+      <button onClick={() => navigateToGamePage(gameInfo)}>Game Page</button>
+    </nav>
+    {showVisitShopButton && <button id="visit-shop" className="visit-shop" onClick={navigateToGameShop}>Visit shop</button>}
+    {content}
+    {showVisitGameLibraryButton && <button id="visit-game-library" className="visit-game-library" onClick={navigateToMyGames}>Visit games library</button>}
+    {showVisitFavoriteGamesButton && <button id="visit-favorite-games" className="visit-favorite-games" onClick={navigateToFavGames}>Visit favorite games</button>}
+    <footer>
+      <p>
+        Powered by <a href="https://rawg.io/">RAWG API</a>
+      </p>      
+    </footer>
+  </div>
   );  
 }
 
 export default App;
-
-
 
 
 //Kilder: https://stackoverflow.com/questions/38486660/how-to-add-a-classname-id-to-react-bootstrap-component
