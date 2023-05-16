@@ -12,3 +12,22 @@ https://gyazo.com/83715a7fe78b4a5160a5592985851f8b
 
 Joachim Bjerkland: JoachimBjerkland (i ett ord)
 Patrick Cuic: PattyMakes (i ett ord)
+
+
+Kilder (Har også lagt inn kilder i kode, legger ved kilder jeg ikke har med i koden her også):
+https://stackoverflow.com/questions/38486660/how-to-add-a-classname-id-to-react-bootstrap-component
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strong
+https://legacy.reactjs.org/docs/lists-and-keys.html
+https://upmostly.com/tutorials/react-filter-filtering-arrays-in-react-with-examples
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice
+https://www.w3schools.com/html/html_id.asp
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length
+https://byby.dev/js-slugify-string (For slug)
+https://dmitripavlutin.com/fetch-with-json/ (Fetch)
+https://legacy.reactjs.org/docs/hooks-effect.html (useEffect)
+https://docs.fileformat.com/web/scss/ (Hvordan bruke sass)
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/name
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/null
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img
+https://www.tabnine.com/code/javascript/functions/builtins/fetchData (fetchData)
