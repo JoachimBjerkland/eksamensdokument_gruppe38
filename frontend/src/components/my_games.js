@@ -60,7 +60,9 @@ function MyGames() {
       {isDetailsShown && gameId && (
         <div className="game-details">
           <GamePage gameId={gameId} />
-        <button onClick={handleCloseDetails} className="close-button">&#x2716;</button>
+          <button onClick={handleCloseDetails} className="close-button">
+            &#x2716;
+          </button>
         </div>
       )}
     </div>

@@ -40,8 +40,8 @@ function FavGames() {
             <p>
               <strong>Genres:</strong> {game.genres.map((genre) => genre.name).join(', ')}
             </p>
-            <button onClick={() => handleGameClick(game.id)}>View Game Details</button>
-            <button onClick={() => handleRemoveGame(game.id)}>Remove From Favorites</button>
+            <button id={`game-details-${game.id}`} className="game-details" onClick={() => handleGameClick(game.id)}>View Details</button>
+            <button id={`remove-favorites-${game.id}`} className="remove-favorites" onClick={() => handleRemoveGame(game.id)}>Fjern fra favoritt</button>
           </li>
         ))}
       </ul>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 function GamePage(props) {
-  const [game, setGame, onClose] = useState(null);
+  const [game, setGame] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
