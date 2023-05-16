@@ -25,7 +25,7 @@ function Home() {
         setMyGames(data.results);
       })
 
-    fetch('https://api.rawg.io/api/games?key=84ac59c1218a4dc4a60287a81d0a0fbd&dates=2019-01-01,2023-05-08&ordering=-rating&page_size=2')
+    fetch('https://api.rawg.io/api/games?key=84ac59c1218a4dc4a60287a81d0a0fbd&dates=2019-09-01,2019-09-30&platforms=18,1,7ordering=-rating&page_size=2')
       .then(res => res.json())
       .then(data => {
         setFavoriteGames(data.results);

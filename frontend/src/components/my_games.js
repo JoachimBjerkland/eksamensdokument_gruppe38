@@ -32,6 +32,14 @@ function MyGames() {
   return (
     <div>
       <h1 id="games-heading">MY GAMES</h1>
+      {isDetailsShown && gameId && (
+        <div className="game-details">
+          <GamePage gameId={gameId} />
+          <button onClick={handleCloseDetails} className="close-button">
+            &#x2716;
+          </button>
+        </div>
+      )}
       {games.length > 0 ? (
         <ul className="game-list">
           {games.map((game, index) => (
@@ -57,14 +65,6 @@ function MyGames() {
           ))}
         </ul>
       ) : null}
-      {isDetailsShown && gameId && (
-        <div className="game-details">
-          <GamePage gameId={gameId} />
-          <button onClick={handleCloseDetails} className="close-button">
-            &#x2716;
-          </button>
-        </div>
-      )}
     </div>
   );
 }
