@@ -27,3 +27,7 @@ function GameDetails({ match }) {
 
 export default GameDetails;
 
+//Kilde: https://legacy.reactjs.org/docs/components-and-props.html
+//Kilde: https://byby.dev/js-slugify-string (For slug)
+//Kilde: https://dmitripavlutin.com/fetch-with-json/ (Fetch)
+//Kilde: https://legacy.reactjs.org/docs/hooks-effect.html (useEffect)

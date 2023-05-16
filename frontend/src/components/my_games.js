@@ -76,3 +76,9 @@ export default MyGames;
 //Kilde: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strong
 //Kilde: https://legacy.reactjs.org/docs/lists-and-keys.html
 //Kilde: https://upmostly.com/tutorials/react-filter-filtering-arrays-in-react-with-examples
+//Kilde: https://www.w3schools.com/html/html_id.asp
+//Kilde: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some
+//Kilde: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length
+//Kilde: https://byby.dev/js-slugify-string (For slug)
+//Kilde: https://dmitripavlutin.com/fetch-with-json/ (Fetch)
+//Kilde: https://legacy.reactjs.org/docs/hooks-effect.html (useEffect)
