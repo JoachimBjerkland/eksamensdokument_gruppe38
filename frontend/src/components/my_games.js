@@ -33,7 +33,7 @@ function MyGames() {
     <div>
       <h1>MY GAMES</h1>
       {isDetailsShown && gameId && (
-        <div className="game-details">
+        <div className="games-details">
           <GamePage gameId={gameId} />
           <button onClick={handleCloseDetails} className="close-button">
             &#x2716;
