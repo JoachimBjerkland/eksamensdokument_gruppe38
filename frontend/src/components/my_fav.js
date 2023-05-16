@@ -29,6 +29,11 @@ function FavGames() {
   return (
     <div>
       <h1 id="fav-heading">MY FAVORITE GAMES</h1>
+       {selectedGameId && (
+        <div className="game-page-modal">
+          <GamePage gameId={selectedGameId} />
+        </div>
+      )}
       <ul id="fav-games-list">
         {favoriteGames.map((game) => (
           <li key={game.id}>
@@ -45,11 +50,6 @@ function FavGames() {
           </li>
         ))}
       </ul>
-      {selectedGameId && (
-        <div className="game-page-modal">
-          <GamePage gameId={selectedGameId} />
-        </div>
-      )}
     </div>
   );
 }
