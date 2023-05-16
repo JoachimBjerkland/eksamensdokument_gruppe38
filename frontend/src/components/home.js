@@ -54,8 +54,8 @@ return (
       <li id={`game-card-${game.id}`} className="game-card" key={game.id}>
         {index === 0 ? (
           <>
-            <h3>{game.name}</h3>
             <img src={game.background_image} alt={game.name} />
+            <h3>{game.name}</h3>
             <p><strong>Release Date:</strong> {game.released}</p>
             <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
             <div className="button-container">
@@ -82,8 +82,8 @@ return (
           </>
         ) : (
           <>
-            <h3>{game.name}</h3>
             <img src={game.background_image} alt={game.name} />
+            <h3>{game.name}</h3>
             <p><strong>Release Date:</strong> {game.released}</p>
             <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
             <div className="button-container">
@@ -109,8 +109,8 @@ return (
     {favoriteGames.map(game => (
       <li id={`favorite-card-${game.id}`} className="game-card" key={game.id}>
         <div>
-          <h3>{game.name}</h3>
           <img src={game.background_image} alt={game.name} />
+          <h3>{game.name}</h3>
           <p><strong>Release Date:</strong> {game.released}</p>
           <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
         </div>
@@ -134,8 +134,8 @@ return (
     {myGames.map(game => (
       <li id={`game-card-${game.id}`} className="game-card" key={game.id}>
         <div>
-          <h3>{game.name}</h3>
           <img src={game.background_image} alt={game.name} />
+          <h3>{game.name}</h3>
           <p><strong>Release Date:</strong> {game.released}</p>
           <p><strong>Genres:</strong> {game.genres.map(genre => genre.name).join(', ')}</p>
         </div>
