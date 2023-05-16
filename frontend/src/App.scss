@@ -17,6 +17,7 @@ div, article, header, section, aside, span, footer, header {
   box-sizing: border-box;
 }
 
+
 .transition {
   transition: ease-in-out .4s;
 }
@@ -426,5 +427,6 @@ padding: 8px 16px;
     cursor: pointer;
     font-size: 0.8rem;
   }
+  
 
   //Kilde: https://docs.fileformat.com/web/scss/ (Hvordan bruke sass)
