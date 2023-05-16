@@ -15,7 +15,7 @@ Joachim Bjerkland: JoachimBjerkland (i ett ord)
 Patrick Cuic: PattyMakes (i ett ord)
 
 
-Kilder (Har også lagt inn kilder i kode, legger ved kilder jeg ikke har med i koden her også):
+Kilder (Har også lagt inn kilder i kode, legger ved kilder vi ikke har med i koden her også):
 https://stackoverflow.com/questions/38486660/how-to-add-a-classname-id-to-react-bootstrap-component
 
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strong
