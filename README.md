@@ -11,6 +11,7 @@ https://gyazo.com/83715a7fe78b4a5160a5592985851f8b
 (Bilde av api key)
 
 Joachim Bjerkland: JoachimBjerkland (i ett ord)
+
 Patrick Cuic: PattyMakes (i ett ord)
 
 
